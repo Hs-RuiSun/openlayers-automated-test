@@ -1,0 +1,11 @@
+{
+	"LoginTest": [
+		{
+			"title": "Login Test1",
+			"caseID": 37881,
+			"username": "userGFI",
+			"password": "gfi2015",
+			"expectedResult": ""
+		}
+	]
+}

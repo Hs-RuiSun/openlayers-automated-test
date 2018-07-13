@@ -1,0 +1,166 @@
+{
+	"ThroughputTests": [
+		{
+			"title": "Verify the total positions at overall 2sec time interval - Scenario1",
+			"caseID": 39653,
+			"dbUrl": "jdbc:mysql://localhost:3306/feedanalysis",
+			"dbUser": "root",
+			"dbPass": "",
+			"logFile": "2sec_logfile1.txt",
+			"interval": "2"
+		},
+		{
+			"title": "Verify the total positions at overall 2sec time interval with 3 timestamps-Scenario2",
+			"caseID": 41107,
+			"dbUrl": "jdbc:mysql://localhost:3306/feedanalysis",
+			"dbUser": "root",
+			"dbPass": "",
+			"logFile": "2sec_logfile2.txt",
+			"interval": "2"
+		},
+		{
+			"title": "Verify the total positions at overall 2sec time interval - Scenario3",
+			"caseID": 41108,
+			"dbUrl": "jdbc:mysql://localhost:3306/feedanalysis",
+			"dbUser": "root",
+			"dbPass": "",
+			"logFile": "2sec_logfile3.txt",
+			"interval": "2"
+		},
+		{
+			"title": "Verify the total positions at overall 2sec time interval - Scenario4",
+			"caseID": 41109,
+			"dbUrl": "jdbc:mysql://localhost:3306/feedanalysis",
+			"dbUser": "root",
+			"dbPass": "",
+			"logFile": "2sec_logfile4.txt",
+			"interval": "2"
+		},
+		{
+			"title": "Verify the total positions at overall 2sec time interval with combination of difference in microseconds - Scenario5",
+			"caseID": 41110,
+			"dbUrl": "jdbc:mysql://localhost:3306/feedanalysis",
+			"dbUser": "root",
+			"dbPass": "",
+			"logFile": "2sec_logfile5.txt",
+			"interval": "2"
+		},
+		{
+			"title": "Verify the total positions at overall 2sec time interval- Scenario6",
+			"caseID": 41111,
+			"dbUrl": "jdbc:mysql://localhost:3306/feedanalysis",
+			"dbUser": "root",
+			"dbPass": "",
+			"logFile": "2sec_logfile6.txt",
+			"interval": "2"
+		},
+		{
+			"title": "Verify the total positions at exact 4sec difference-Scenario1",
+			"caseID": 41232,
+			"dbUrl": "jdbc:mysql://localhost:3306/feedanalysis",
+			"dbUser": "root",
+			"dbPass": "",
+			"logFile": "4sec_logfile1.txt",
+			"interval": "4"
+		},
+		{
+			"title": "Verify the total positions at exact 4sec difference-Scenario2",
+			"caseID": 39651,
+			"dbUrl": "jdbc:mysql://localhost:3306/feedanalysis",
+			"dbUser": "root",
+			"dbPass": "",
+			"logFile": "4sec_logfile2.txt",
+			"interval": "4"
+		},
+		{
+			"title": "Verify the total positions at overall 4sec difference with microseconds difference timestamps-Scenario3",
+			"caseID": 41112,
+			"dbUrl": "jdbc:mysql://localhost:3306/feedanalysis",
+			"dbUser": "root",
+			"dbPass": "",
+			"logFile": "4sec_logfile3.txt",
+			"interval": "4"
+		},
+		{
+			"title": "Verify the total positions at exact 4sec difference-Scenario4",
+			"caseID": 41113,
+			"dbUrl": "jdbc:mysql://localhost:3306/feedanalysis",
+			"dbUser": "root",
+			"dbPass": "",
+			"logFile": "4sec_logfile4.txt",
+			"interval": "4"
+		},
+		{
+			"title": "Verify the total positions at exact 4sec difference-Scenario5",
+			"caseID": 41114,
+			"dbUrl": "jdbc:mysql://localhost:3306/feedanalysis",
+			"dbUser": "root",
+			"dbPass": "",
+			"logFile": "4sec_logfile5.txt",
+			"interval": "4"
+		},
+		{
+			"title": "Verify the total positions at exact 4sec difference-Scenario6",
+			"caseID": 41115,
+			"dbUrl": "jdbc:mysql://localhost:3306/feedanalysis",
+			"dbUser": "root",
+			"dbPass": "",
+			"logFile": "4sec_logfile6.txt",
+			"interval": "4"
+		},
+		{
+			"title": "Verify the total positions at exact 4sec difference-Scenario7",
+			"caseID": 41116,
+			"dbUrl": "jdbc:mysql://localhost:3306/feedanalysis",
+			"dbUser": "root",
+			"dbPass": "",
+			"logFile": "4sec_logfile7.txt",
+			"interval": "4"
+		},
+		{
+			"title": "Verify the total positions at exact 6sec difference-Scenario1",
+			"caseID": 41117,
+			"dbUrl": "jdbc:mysql://localhost:3306/feedanalysis",
+			"dbUser": "root",
+			"dbPass": "",
+			"logFile": "6sec_logfile1.txt",
+			"interval": "6"
+		},
+		{
+			"title": "Verify the total positions at exact 6sec difference-Scenario2",
+			"caseID": 41118,
+			"dbUrl": "jdbc:mysql://localhost:3306/feedanalysis",
+			"dbUser": "root",
+			"dbPass": "",
+			"logFile": "6sec_logfile2.txt",
+			"interval": "6"
+		},
+		{
+			"title": "Verify the total positions at exact 6sec difference-Scenario3",
+			"caseID": 41119,
+			"dbUrl": "jdbc:mysql://localhost:3306/feedanalysis",
+			"dbUser": "root",
+			"dbPass": "",
+			"logFile": "6sec_logfile3.txt",
+			"interval": "6"
+		},
+		{
+			"title": "Verify the total positions at exact 6sec difference-Scenario4",
+			"caseID": 41120,
+			"dbUrl": "jdbc:mysql://localhost:3306/feedanalysis",
+			"dbUser": "root",
+			"dbPass": "",
+			"logFile": "6sec_logfile4.txt",
+			"interval": "6"
+		},
+		{
+			"title": "Verify the total positions at overall 2sec time interval - Scenario1",
+			"caseID": 39653,
+			"dbUrl": "jdbc:mysql://localhost:3306/feedanalysis",
+			"dbUser": "root",
+			"dbPass": "",
+			"logFile": "2sec_logfile1.txt",
+			"interval": "2"
+		}
+	]
+}

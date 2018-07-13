@@ -1,0 +1,15 @@
+{
+	"Browser": "Chrome",
+	"projectUrl": "http://localhost:9000/#!/",
+	"alc": "",
+	"projectID": 27,
+	"spiraUser": "swathi.vemula",
+	"spiraPass": "w3Lc0m32!",
+	"runID": 608,
+	"version": "",
+	"Scenarios": [
+		{
+			"Scenario": "weatherConfigTab"
+		}
+	]
+}

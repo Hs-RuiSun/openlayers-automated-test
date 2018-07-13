@@ -1,0 +1,14 @@
+{
+	"SE_Weather": [
+		{
+			"title": "Login Test1",
+			"caseID": 37881,
+			"testMethod": "Lighting"
+		},
+		{
+			"title": "Login Test1",
+			"caseID": 37881,
+			"testMethod": "Radar"
+		}
+	]
+}

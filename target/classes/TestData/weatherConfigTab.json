@@ -1,0 +1,11 @@
+{
+	"weatherConfigTab": [
+		{
+			"title": "Verify the basic package for Weather data",
+			"caseID": 48314,
+			"username": "userGFI",
+			"password": "gfi2015",
+			"weather_testmethod": "see all basic weather fields"
+		}
+	]
+}
