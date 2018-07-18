@@ -66,6 +66,10 @@ public class Form {
         fruits.selectByVisibleText("Banana");
         fruits.selectByIndex(1);
     }
+    
+    public static void radio(WebDriver driver) {
+        
+    }
 
     public static void login(WebDriver driver) {
         String baseUrl = "http://demo.guru99.com/test/login.html";
