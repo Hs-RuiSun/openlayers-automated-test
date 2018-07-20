@@ -1,4 +1,4 @@
-package com.cgi.selenium.framework.form;
+package com.cgi.selenium.framework;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -10,14 +10,8 @@ public class File {
         String baseUrl = "http://demo.guru99.com/test/upload/";
         driver.get(baseUrl);
         WebElement uploadElement = driver.findElement(By.id("uploadfile_0"));
-
-        // enter the file path onto the file-selection input field
         uploadElement.sendKeys("C:\\Users\\ruby.sun\\Downloads\\TestSuite.xlsx");
-
-        // check the "I accept the terms of service" check box
         driver.findElement(By.id("terms")).click();
-
-        // click the "UploadFile" button
         driver.findElement(By.name("send")).click();
     }
     public void download(WebDriver driver) {
