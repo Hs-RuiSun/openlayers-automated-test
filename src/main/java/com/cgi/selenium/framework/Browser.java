@@ -2,6 +2,7 @@ package com.cgi.selenium.framework;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -15,6 +16,16 @@ import java.util.Iterator;
 import java.util.Set;
 
 public class Browser {
+    public static void cannotFindElement(WebDriver driver) {
+        driver.get("http://www.facebook.com");
+        try {
+            WebElement element = driver.findElement(By.xpath("//*[@id='elementId']"));
+        }catch(NoSuchElementException e) {
+             System.out.println("catch exception");
+        }
+        System.out.println("code disappears");
+    } 
+    
     public static void multipleWindows(WebDriver driver) {
         driver.get("http://demo.guru99.com/popup.php");
         driver.manage().window().maximize();
@@ -86,6 +97,6 @@ public class Browser {
         scroll(driver);
         createScreenShot(driver);*/
         //multipleWindows(driver);
-        scroll(driver);
+        cannotFindElement(driver);
     }
 }

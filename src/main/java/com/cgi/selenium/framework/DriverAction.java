@@ -26,7 +26,14 @@ public class DriverAction {
         dragAndDrop.perform();
     }
     public static void mouse(WebDriver driver) {
-        String baseUrl = "http://facebook.com";
+        String url = "https://www.facebook.com/";
+        driver.get(url);
+        WebElement button = driver.findElement(By.id("//*[@id=\"u_0_2\"]"));
+        Actions mouseMoveClick = new Actions(driver);
+        System.out.println(button.getLocation().getX() + "," + button.getLocation().getX());
+        Action action = mouseMoveClick.moveByOffset(button.getLocation().getX(), button.getLocation().getX()).click().build();
+        action.perform();
+        /*String baseUrl = "http://facebook.com";
         driver.get(baseUrl);
         WebElement txtUsername = driver.findElement(By.id("email"));
         Actions builder = new Actions(driver);
@@ -38,13 +45,13 @@ public class DriverAction {
                 .doubleClick()
                 .contextClick()   //right click
                 .build();
-        seriesOfActions.perform();
+        seriesOfActions.perform();*/
     }
     
     public static void main(String[] args) {
         // declaration and instantiation of objects/variables
         System.setProperty("webdriver.chrome.driver", "C:\\Drivers\\chromedriver.exe");
         WebDriver driver = new ChromeDriver();
-        dragDrop(driver);
+        mouse(driver);
     }
 }

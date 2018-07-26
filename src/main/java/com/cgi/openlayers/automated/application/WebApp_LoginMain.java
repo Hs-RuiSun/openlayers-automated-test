@@ -24,7 +24,7 @@ public class WebApp_LoginMain extends Commons {
         // changing loginpagejson to jsondata
         driver.get(JsonData.projectUrl);
 
-        LoginAction.attemptLogin(Maps_OthersToggleJson.username, Maps_OthersToggleJson.password);
+        LoginAction.attemptLogin(LoginPageJson.username, LoginPageJson.password);
         System.out.println("Login successfull");
 
         System.out.println("LoginPageJson.expectedResult " + LoginPageJson.expectedResult);

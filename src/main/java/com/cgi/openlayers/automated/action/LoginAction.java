@@ -6,6 +6,8 @@ import com.cgi.openlayers.automated.common.SendKeys;
 import com.cgi.openlayers.automated.xpath.LoginXpath;
 import com.cgi.openlayers.automated.xpath.PageIdentifier;
 
+import java.io.IOException;
+
 public class LoginAction {
     public  static void attemptLogin(String username, String password) {
         if (!PageIdentifier.LOGIN.isCurrentPage()) {
@@ -24,5 +26,12 @@ public class LoginAction {
              SendKeys.XPATH(LoginXpath.PASSWORD, password);
              Click.XPATH(LoginXpath.SIGNIN_BUTTON);
          }
+         
+         try {
+            OpenLayersAction.getAircraft();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
      }
 }

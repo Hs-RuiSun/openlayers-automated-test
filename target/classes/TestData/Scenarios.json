@@ -9,7 +9,7 @@
 	"version": "",
 	"Scenarios": [
 		{
-			"Scenario": "weatherConfigTab"
+			"Scenario": "LoginTest"
 		}
 	]
 }

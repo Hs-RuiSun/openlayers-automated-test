@@ -16,7 +16,6 @@ public class Displayed extends Commons {
     public static boolean XPATH(String XPATH) {
         element = driver.findElement(By.xpath(XPATH));
         // String location = element.getLocation().toString();
-        System.out.println(XPATH + " displayed, " + element.isDisplayed());
         int count = 0;
         /*while (!element.isDisplayed()) {
             try {
