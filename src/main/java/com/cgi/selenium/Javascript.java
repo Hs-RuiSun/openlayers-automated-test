@@ -1,4 +1,4 @@
-package com.cgi.selenium.framework;
+package com.cgi.selenium;
 
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;

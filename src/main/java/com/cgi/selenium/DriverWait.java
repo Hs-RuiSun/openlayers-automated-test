@@ -1,4 +1,4 @@
-package com.cgi.selenium.framework;
+package com.cgi.selenium;
 
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
