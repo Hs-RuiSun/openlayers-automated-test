@@ -14,12 +14,6 @@ import static org.junit.Assert.assertTrue;
 public class LoginTest {
     private static WebDriver webDriver;
     
-    public static Collection<Object[]> parameters(){
-        return Arrays.asList(new Object[][] {
-            {"http://192.168.1.138:2020/#!/", "userGFI", "gfi2015", true}
-        });
-    }
-    
     @BeforeAll
     public static void setUp() {
         System.setProperty("webdriver.chrome.driver", "C:\\Drivers\\chromedriver.exe");

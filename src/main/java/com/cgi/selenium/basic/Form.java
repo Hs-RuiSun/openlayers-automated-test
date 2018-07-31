@@ -1,4 +1,4 @@
-package com.cgi.selenium;
+package com.cgi.selenium.basic;
 
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class Form {
+    
     public static void alert(WebDriver driver) {
         driver.get("http://demo.guru99.com/test/delete_customer.php");          
         driver.findElement(By.name("cusid")).sendKeys("53920");                 
@@ -63,15 +64,16 @@ public class Form {
         fruits.selectByIndex(1);
     }
     
-    public static void radio(WebDriver driver) {
-        String baseURL = "file:///C:/Users/ruby.sun/Downloads/selenium.html";
-        driver.get(baseURL);
-        List<WebElement> radioButtonGroup = driver.findElements(By.xpath("/html/body/div/input"));
-        for (WebElement element : radioButtonGroup) {
-            if (element.getAttribute("value").equals("2")) {
-                element.click();
-            }
+    public static void radioCheckbox(WebDriver driver) {
+        driver.get("http://demo.guru99.com/test/radio.html");
+        //input type=radio or type=checkbox
+        List<WebElement> list = driver.findElements(By.xpath("/html/body/div/input"));
+        for (WebElement element : list) {
+            element.click();
         }
+        
+        WebElement element = driver.findElement(By.id("vfb-6-0"));
+        element.click();
     }
 
     public static void login(WebDriver driver) {
@@ -105,7 +107,7 @@ public class Form {
         // declaration and instantiation of objects/variables
         System.setProperty("webdriver.chrome.driver", "C:\\Drivers\\chromedriver.exe");
         WebDriver driver = new ChromeDriver();
-        alert(driver);
+        radioCheckbox(driver);
         // login(driver);
         // driver.close();
     }
