@@ -1,4 +1,4 @@
-package com.cgi.junit5;
+package com.cgi.junit;
 
 import org.junit.jupiter.api.extension.ExtensionContext;
 import org.junit.jupiter.api.extension.ParameterContext;

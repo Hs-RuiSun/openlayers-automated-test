@@ -11,6 +11,14 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.util.concurrent.TimeUnit;
 
 public class DriverWait {
+    public static void isVisible(WebDriver driver) {
+        driver.get("file:///C:/Users/ruby.sun/Downloads/selenium.html");
+        WebDriverWait driverWait = new WebDriverWait(driver, 10);
+        driverWait.until(ExpectedConditions.visibilityOfElementLocated(By.id("inpute")));
+        WebElement element = driver.findElement(By.id("input"));
+        element.sendKeys("yeah");
+    }
+    
     public static void isEnabled(WebDriver driver) {
         driver.manage().window().maximize();
         String contactUrl = "http://www.testdiary.com/training/selenium/selenium-test-page/";
@@ -55,6 +63,6 @@ public class DriverWait {
     public static void main(String[] args) {
         System.setProperty("webdriver.chrome.driver", "C:\\Drivers\\chromedriver.exe");
         WebDriver driver = new ChromeDriver();
-        isEnabled(driver);
+        isVisible(driver);
     }
 }

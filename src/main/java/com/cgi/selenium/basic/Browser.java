@@ -53,9 +53,10 @@ public class Browser {
     public static void switchTab(WebDriver driver) {
         driver.manage().window().maximize();
         // driver.findElement(By.cssSelector("body")).sendKeys(Keys.CONTROL+"t"); //can't open a new tab????
-        ((JavascriptExecutor) driver).executeScript("window.open();");
+        ((JavascriptExecutor) driver).executeScript("window.open()");
         ArrayList<String> tabs = new ArrayList<String>(driver.getWindowHandles());
         driver.switchTo().window(tabs.get(1));
+        driver.get("http://www.google.com");
     }
 
     /**
@@ -97,6 +98,6 @@ public class Browser {
         scroll(driver);
         createScreenShot(driver);*/
         //multipleWindows(driver);
-        cannotFindElement(driver);
+        switchTab(driver);
     }
 }

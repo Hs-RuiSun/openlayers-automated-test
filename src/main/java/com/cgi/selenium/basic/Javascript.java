@@ -11,8 +11,8 @@ public class Javascript {
         System.setProperty("webdriver.chrome.driver", "C:\\Drivers\\chromedriver.exe");
         WebDriver driver = new ChromeDriver();
         JavascriptExecutor js = (JavascriptExecutor)driver;
-        String javascript = "var arr = [555,666]; var aircraftCoord = function(){ return arr}; return arr;";
-        ArrayList aircraftCoord = (ArrayList) js.executeScript(javascript); 
+        String javascript = "return [613.0450345394756, 142.1858329595642];";
+        String[] aircraftCoord = (String[]) js.executeScript(javascript); 
         System.out.println(aircraftCoord);
         
     }
