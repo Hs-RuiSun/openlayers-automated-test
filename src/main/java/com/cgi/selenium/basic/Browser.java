@@ -2,6 +2,7 @@ package com.cgi.selenium.basic;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -9,6 +10,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.GeckoDriverService;
+import org.openqa.selenium.interactions.Actions;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -16,6 +19,15 @@ import java.util.Iterator;
 import java.util.Set;
 
 public class Browser {
+    public static void firefox() {
+        System.setProperty("webdriver.gecko.driver", "C:\\Drivers\\geckodriver.exe");
+        WebDriver driver = new FirefoxDriver();
+        driver.get("file:///C:/Users/ruby.sun/Downloads/selenium.html");
+        WebElement element = driver.findElement(By.linkText("facebook"));
+        
+        Actions action= new Actions(driver);
+        action.contextClick(element).sendKeys(Keys.ARROW_DOWN).sendKeys(Keys.ARROW_DOWN).sendKeys(Keys.RETURN).build().perform();
+    }
     public static void cannotFindElement(WebDriver driver) {
         driver.get("http://www.facebook.com");
         try {
@@ -88,8 +100,8 @@ public class Browser {
     }
 
     public static void main(String[] args) throws InterruptedException {
-        System.setProperty("webdriver.chrome.driver", "C:\\Drivers\\chromedriver.exe");
-        WebDriver driver = new ChromeDriver();
+        /*System.setProperty("webdriver.chrome.driver", "C:\\Drivers\\chromedriver.exe");
+        WebDriver driver = new ChromeDriver();*/
         /*
          * System.setProperty("webdriver.gecko.driver", "C:\\Drivers\\geckodriver.exe"); WebDriver driver = new
          * FirefoxDriver();
@@ -98,6 +110,7 @@ public class Browser {
         scroll(driver);
         createScreenShot(driver);*/
         //multipleWindows(driver);
-        switchTab(driver);
+        //switchTab(driver);
+        firefox();
     }
 }

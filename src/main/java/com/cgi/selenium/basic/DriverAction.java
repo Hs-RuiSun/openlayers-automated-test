@@ -8,9 +8,24 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
 
+import java.awt.RenderingHints.Key;
 import java.util.concurrent.TimeUnit;
 
 public class DriverAction {
+    public static void openInANewTab(WebDriver driver) {
+        driver.get("http://seleniumtutorialpoint.com/");
+        WebElement element = driver.findElement(By.xpath("//*[@id=\"post-393\"]/div/div/ul/li[1]/strong/a"));
+        
+        Actions action= new Actions(driver);
+        action.contextClick(element).sendKeys(Keys.ARROW_DOWN).sendKeys(Keys.ARROW_DOWN).build().perform();
+        
+       /* Actions mouseAction = new Actions(driver);
+        Action openInNewTab = mouseAction.contextClick(element).sendKeys(Keys.ARROW_DOWN).sendKeys(Keys.ENTER).build();
+        openInNewTab.perform();*/
+        /*Action openInNewWindow = mouseAction.contextClick(element).sendKeys(Keys.ARROW_DOWN).sendKeys(Keys.ARROW_DOWN).sendKeys(Keys.ENTER).build();
+        openInNewWindow.perform();*/
+    }
+    
     public static void dragDrop(WebDriver driver) {
         driver.get("http://www.dhtmlx.com/docs/products/dhtmlxTree/index.shtml");
         driver.manage().window().maximize();
@@ -25,6 +40,7 @@ public class DriverAction {
                                                 .build();
         dragAndDrop.perform();
     }
+    
     public static void mouse(WebDriver driver) {
         String url = "https://www.facebook.com/";
         driver.get(url);
@@ -52,6 +68,6 @@ public class DriverAction {
         // declaration and instantiation of objects/variables
         System.setProperty("webdriver.chrome.driver", "C:\\Drivers\\chromedriver.exe");
         WebDriver driver = new ChromeDriver();
-        mouse(driver);
+        openInANewTab(driver);
     }
 }
