@@ -64,11 +64,15 @@ public class Browser {
 
     public static void switchTab(WebDriver driver) {
         driver.manage().window().maximize();
-        // driver.findElement(By.cssSelector("body")).sendKeys(Keys.CONTROL+"t"); //can't open a new tab????
-        ((JavascriptExecutor) driver).executeScript("window.open()");
+        driver.get("http://www.facebook.com");
+        /*WebElement element = driver.findElement(By.cssSelector("body"));
+                //driver.findElement(By.xpath("//*[@id=\"facebook\"]/body"));
+        element.sendKeys(Keys.CONTROL + "t");*/
+        //driver.findElement(By.cssSelector("body")).sendKeys(Keys.CONTROL+"t"); //can't open a new tab????
+        //((JavascriptExecutor) driver).executeScript("window.open()");
         ArrayList<String> tabs = new ArrayList<String>(driver.getWindowHandles());
-        driver.switchTo().window(tabs.get(1));
-        driver.get("http://www.google.com");
+        /*driver.switchTo().window(tabs.get(1));
+        driver.get("http://www.google.com");*/
     }
 
     /**
@@ -100,17 +104,17 @@ public class Browser {
     }
 
     public static void main(String[] args) throws InterruptedException {
-        /*System.setProperty("webdriver.chrome.driver", "C:\\Drivers\\chromedriver.exe");
-        WebDriver driver = new ChromeDriver();*/
-        /*
-         * System.setProperty("webdriver.gecko.driver", "C:\\Drivers\\geckodriver.exe"); WebDriver driver = new
+        System.setProperty("webdriver.chrome.driver", "C:\\Drivers\\chromedriver.exe");
+        WebDriver driver = new ChromeDriver();
+        
+        /* System.setProperty("webdriver.gecko.driver", "C:\\Drivers\\geckodriver.exe"); WebDriver driver = new
          * FirefoxDriver();
          */
         /*navigate(driver);
         scroll(driver);
         createScreenShot(driver);*/
         //multipleWindows(driver);
-        //switchTab(driver);
-        firefox();
+        switchTab(driver);
+        //firefox();
     }
 }

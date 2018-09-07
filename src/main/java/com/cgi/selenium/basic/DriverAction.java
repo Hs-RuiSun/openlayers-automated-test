@@ -2,23 +2,41 @@ package com.cgi.selenium.basic;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
 
-import java.awt.RenderingHints.Key;
+import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
 public class DriverAction {
+    public static void clickAfterRefresh(WebDriver driver) {
+        driver.get("http://demo.guru99.com/popup.php");
+        WebElement element = driver.findElement(By.xpath("/html/body/p/a"));
+        Point link = element.getLocation();
+        int x = link.getX()+2;
+        int y = link.getY()+2;
+        driver.navigate().refresh();
+        Actions action= new Actions(driver);
+        action.moveByOffset(x, y).click().build().perform();
+    }
+    
     public static void openInANewTab(WebDriver driver) {
         driver.get("http://seleniumtutorialpoint.com/");
         WebElement element = driver.findElement(By.xpath("//*[@id=\"post-393\"]/div/div/ul/li[1]/strong/a"));
         
         Actions action= new Actions(driver);
-        action.contextClick(element).sendKeys(Keys.ARROW_DOWN).sendKeys(Keys.ARROW_DOWN).build().perform();
+        action.keyDown(Keys.CONTROL).sendKeys("t").keyUp(Keys.CONTROL).build().perform();
         
+        driver.findElement(By.cssSelector("body")).sendKeys(Keys.CONTROL + "t");
+
+        //switching control to new tab
+        ArrayList<String> tabs2 = new ArrayList<String> (driver.getWindowHandles()); 
+        
+        //action.contextClick(element).sendKeys(Keys.ARROW_DOWN).sendKeys(Keys.ARROW_DOWN).sendKeys(Keys.ENTER).build().perform();
        /* Actions mouseAction = new Actions(driver);
         Action openInNewTab = mouseAction.contextClick(element).sendKeys(Keys.ARROW_DOWN).sendKeys(Keys.ENTER).build();
         openInNewTab.perform();*/

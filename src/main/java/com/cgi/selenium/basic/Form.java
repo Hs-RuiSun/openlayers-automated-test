@@ -14,6 +14,17 @@ import java.util.concurrent.TimeUnit;
 
 public class Form {
     
+    public static WebElement findElement(WebDriver driver) {
+        driver.get("http://demo.guru99.com/test/delete_customer.php");
+        WebElement element;
+        try {
+            element = driver.findElement(By.name("cuside"));
+        }catch(Exception e) {
+            System.out.println("will you come here?");
+        }
+        return null;
+    }
+    
     public static void alert(WebDriver driver) {
         driver.get("http://demo.guru99.com/test/delete_customer.php");          
         driver.findElement(By.name("cusid")).sendKeys("53920");                 
@@ -62,6 +73,7 @@ public class Form {
         Select fruits = new Select(driver.findElement(By.id("fruits")));
         fruits.selectByVisibleText("Banana");
         fruits.selectByIndex(1);
+        System.out.println(driver.findElement(By.xpath("//*[@id=\"fruits\"]/option[1]")).getAttribute("checked"));
     }
     
     public static void radioCheckbox(WebDriver driver) {
@@ -72,8 +84,8 @@ public class Form {
             element.click();
         }
         
-        WebElement element = driver.findElement(By.id("vfb-6-0"));
-        element.click();
+        WebElement element = driver.findElement(By.id("vfb-6-1"));
+        System.out.println(element.getAttribute("checked"));
     }
 
     public static void login(WebDriver driver) {
