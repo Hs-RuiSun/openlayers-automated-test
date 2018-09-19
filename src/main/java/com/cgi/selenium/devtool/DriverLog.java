@@ -1,4 +1,4 @@
-package com.cgi.chrome.devtools;
+package com.cgi.selenium.devtool;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -16,6 +16,9 @@ import org.openqa.selenium.logging.Logs;
 import org.openqa.selenium.remote.Augmenter;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -26,13 +29,14 @@ import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 
-public class Profiling {
+public class DriverLog {
     private static WebDriver driver;
     
     public void setUp() throws Exception {
         DesiredCapabilities caps = DesiredCapabilities.chrome();
         LoggingPreferences logPrefs = new LoggingPreferences();
         logPrefs.enable(LogType.PERFORMANCE, Level.INFO);
+        logPrefs.enable(LogType.PROFILER, Level.ALL);
         caps.setCapability(CapabilityType.LOGGING_PREFS, logPrefs);
         System.setProperty("webdriver.chrome.driver", "C:\\Drivers\\chromedriver.exe");
         driver = new Augmenter().augment(new ChromeDriver(caps));
@@ -41,11 +45,10 @@ public class Profiling {
     }
     
     public static void main(String[] argv) throws Exception {
-        Profiling profiler = new Profiling();
+        DriverLog profiler = new DriverLog();
         profiler.setUp();
         try {
             profiler.ntracking();
-            //driver.get("http://www.google.com");
             /**
              * method-1: run JavaScript
              */
@@ -60,14 +63,7 @@ public class Profiling {
     
     public void ntracking() {
         driver.get("http://192.168.1.138:2020/#!/map");
-        //driver.get("http://localhost:8080/#!/map");
-        try {
-            Thread.sleep(10000);
-        }
-        catch (InterruptedException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
+        new WebDriverWait(driver, 10).until(ExpectedConditions.invisibilityOfAllElements(driver.findElement(By.xpath("//*[@id=\"username\"]"))));
         WebElement usernameElement = driver.findElement(By.xpath("//*[@id=\"username\"]"));
         WebElement passwordElement = driver.findElement(By.xpath("//*[@id=\"password\"]"));
         WebElement signinElement = driver.findElement(By.xpath("//button[normalize-space()='Sign in']"));
@@ -83,8 +79,9 @@ public class Profiling {
              */
             Logs logs = driver.manage().logs();
             System.out.println("Log types: " + logs.getAvailableLogTypes());
-            printLog(LogType.PERFORMANCE);
-            //submitPerformanceResult("Test.testGoogleSearch", logs.get(LogType.PERFORMANCE).getAll());
+            List<LogEntry> entries = driver.manage().logs().get(LogType.PROFILER).getAll();
+            System.out.println("Is profiler log empty? " + entries.size());
+            printLog(LogType.BROWSER);
         }
         finally {
             driver.quit();
@@ -92,13 +89,12 @@ public class Profiling {
     }
 
     void printLog(String type) throws IOException {
-        Logs log = driver.manage().logs();
         List<LogEntry> entries = driver.manage().logs().get(type).getAll();
         System.out.println(entries.size() + " " + type + " log entries found");
         BufferedWriter br = new BufferedWriter(new FileWriter(new File("C:\\Users\\ruby.sun\\Downloads\\log.txt")));
         for (LogEntry entry : entries) {
-            JSONObject message = new JSONObject(entry.getMessage());
-            JSONObject devToolsMessage = message.getJSONObject("message");
+            //JSONObject message = new JSONObject(entry.getMessage());
+            //JSONObject devToolsMessage = message.getJSONObject("message");
             
             //if(devToolsMessage.getString("method").equals("Network.responseReceived")) {
                 //System.out.println(new Date(entry.getTimestamp()) + " " + entry.getLevel() + " " + entry.getMessage());
@@ -107,18 +103,5 @@ public class Profiling {
         }
         br.flush();
         br.close();
-    }
-
-    void submitPerformanceResult(String name, List<LogEntry> perfLogEntries) throws IOException, JSONException {
-        JSONArray devToolsLog = new JSONArray();
-        System.out.println(perfLogEntries.size() + " performance log entries found");
-        for (LogEntry entry : perfLogEntries) {
-            JSONObject message = new JSONObject(entry.getMessage());
-            JSONObject devToolsMessage = message.getJSONObject("message");
-            System.out.println(
-            devToolsMessage.getString("method") + " " + message.getString("webview"));
-            devToolsLog.put(devToolsMessage);
-        }
-        byte[] screenshot = null;
     }
 }

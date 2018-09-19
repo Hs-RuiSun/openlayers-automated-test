@@ -11,6 +11,7 @@ import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Function;
 
@@ -26,23 +27,19 @@ public class DriverWait {
     }
 
     public static void testFluentWait(WebDriver driver) {
-        Wait<WebDriver> wait = new FluentWait<WebDriver>(driver).withTimeout(10, TimeUnit.SECONDS)
-                .pollingEvery(1, TimeUnit.SECONDS).ignoring(NoSuchElementException.class);
-        WebElement seleniumCheckbox = wait.until(new Function<WebDriver, WebElement>() {
-            @Override
+        Wait<WebDriver> wait = new FluentWait<WebDriver>(driver).withTimeout(Duration.ofMillis(300))
+                .pollingEvery(Duration.ofMillis(10))
+                .ignoring(NoSuchElementException.class);
+        long startTime = System.currentTimeMillis();
+        wait.until(new Function<WebDriver, WebElement>() {
             public WebElement apply(WebDriver driver) {
-                return driver.findElement(By.id("seleniumboxe"));
+                try {
+                    return driver.findElement(By.id("seleniumboxe"));
+                }finally {
+                    System.out.println(System.currentTimeMillis() - startTime);
+                }
             }
         });
-        /*
-         * wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("seleniumboxe"))); WebElement seleniumCheckbox
-         * = driver.findElement(By.id("seleniumboxe"));
-         */
-        if (seleniumCheckbox == null) {
-            System.out.println("no element is found");
-            return;
-        }
-        System.out.println(seleniumCheckbox.isDisplayed());
     }
 
     public static void isEnabled(WebDriver driver) {

@@ -1,16 +1,16 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
 
-  <groupId>com.cgi</groupId>
-  <artifactId>openlayers-automated-test</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  <packaging>jar</packaging>
+	<groupId>com.cgi</groupId>
+	<artifactId>openlayers-automated-test</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>jar</packaging>
 
-  <name>openlayers-automated-test</name>
-  <url>http://maven.apache.org</url>
+	<name>openlayers-automated-test</name>
+	<url>http://maven.apache.org</url>
 
-  <properties>
+	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 	<build>
@@ -130,14 +130,14 @@
 	</repositories>
 	<dependencies>
 		<dependency>
-		    <groupId>org.hamcrest</groupId>
-		    <artifactId>hamcrest-core</artifactId>
-		    <version>1.3</version>
+			<groupId>org.hamcrest</groupId>
+			<artifactId>hamcrest-core</artifactId>
+			<version>1.3</version>
 		</dependency>
 		<dependency>
-		    <groupId>org.hamcrest</groupId>
-		    <artifactId>hamcrest-junit</artifactId>
-		    <version>2.0.0.0</version>
+			<groupId>org.hamcrest</groupId>
+			<artifactId>hamcrest-junit</artifactId>
+			<version>2.0.0.0</version>
 		</dependency>
 		<dependency>
 			<groupId>com.sikulix</groupId>
@@ -151,43 +151,43 @@
 			</exclusions>
 		</dependency>
 		<dependency>
-		    <groupId>log4j</groupId>
-		    <artifactId>log4j</artifactId>
-		    <version>1.2.17</version>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.17</version>
 		</dependency>
 		<dependency>
-		    <groupId>org.testng</groupId>
-		    <artifactId>testng</artifactId>
-		    <version>6.11</version>
+			<groupId>org.testng</groupId>
+			<artifactId>testng</artifactId>
+			<version>6.11</version>
 		</dependency>
 		<dependency>
-		    <groupId>com.aventstack</groupId>
-		    <artifactId>extentreports</artifactId>
-		    <version>3.1.5</version>
-		    <scope>provided</scope>
+			<groupId>com.aventstack</groupId>
+			<artifactId>extentreports</artifactId>
+			<version>3.1.5</version>
+			<scope>provided</scope>
 		</dependency>
-		
+
 		<dependency>
-		    <groupId>org.junit.jupiter</groupId>
-		    <artifactId>junit-jupiter-api</artifactId>
-		    <version>5.2.0</version>
-		</dependency>
-		<dependency>
-		    <groupId>org.junit.jupiter</groupId>
-		    <artifactId>junit-jupiter-params</artifactId>
-		    <version>5.2.0</version>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-api</artifactId>
+			<version>5.2.0</version>
 		</dependency>
 		<dependency>
-		    <groupId>org.junit.jupiter</groupId>
-		    <artifactId>junit-jupiter-engine</artifactId>
-		    <version>5.2.0</version>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-params</artifactId>
+			<version>5.2.0</version>
 		</dependency>
 		<dependency>
-		    <groupId>org.junit.platform</groupId>
-		    <artifactId>junit-platform-launcher</artifactId>
-		    <version>1.2.0</version>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-engine</artifactId>
+			<version>5.2.0</version>
 		</dependency>
-		
+		<dependency>
+			<groupId>org.junit.platform</groupId>
+			<artifactId>junit-platform-launcher</artifactId>
+			<version>1.2.0</version>
+		</dependency>
+
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
@@ -204,15 +204,22 @@
 			<version>1.1.1</version>
 		</dependency>
 		<dependency>
-		    <groupId>org.json</groupId>
-		    <artifactId>json</artifactId>
-		    <version>20160810</version>
+			<groupId>org.json</groupId>
+			<artifactId>json</artifactId>
+			<version>20160810</version>
 		</dependency>
-		
+
 		<dependency>
-			<groupId>org.seleniumhq.selenium</groupId>
-			<artifactId>selenium-remote-driver</artifactId>
-			<version>3.8.1</version>
+			<groupId>org.seleniumhq.selenium.fluent</groupId>
+			<artifactId>fluent-selenium</artifactId>
+			<version>1.19</version>
+			<scope>test</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>org.seleniumhq.selenium</groupId>
+					<artifactId>selenium-java</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
@@ -220,25 +227,25 @@
 			<version>3.8.1</version>
 		</dependency>
 		<dependency>
-			<groupId>org.seleniumhq.selenium</groupId>
-			<artifactId>selenium-support</artifactId>
-			<version>3.8.1</version>
+		    <groupId>org.seleniumhq.selenium</groupId>
+		    <artifactId>selenium-api</artifactId>
+		    <version>3.14.0</version>
 		</dependency>
 		<dependency>
-			<groupId>org.seleniumhq.selenium</groupId>
-			<artifactId>selenium-api</artifactId>
-			<version>3.8.1</version>
+			<groupId>com.paulhammant</groupId>
+			<artifactId>ngwebdriver</artifactId>
+			<version>1.1.3</version>
 		</dependency>
-		
+
 		<dependency>
-		    <groupId>org.apache.poi</groupId>
-		    <artifactId>poi</artifactId>
-		    <version>3.17</version>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi</artifactId>
+			<version>3.17</version>
 		</dependency>
 		<dependency>
-		    <groupId>org.apache.poi</groupId>
-		    <artifactId>poi-ooxml</artifactId>
-		    <version>3.9</version>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-ooxml</artifactId>
+			<version>3.9</version>
 		</dependency>
 	</dependencies>
 </project>
