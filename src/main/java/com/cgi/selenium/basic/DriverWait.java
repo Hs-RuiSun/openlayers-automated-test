@@ -6,7 +6,6 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
@@ -18,14 +17,13 @@ import java.util.function.Function;
 
 public class DriverWait {
     public static void waitForPageLoad(WebDriver driver) {
-        ExpectedCondition<Boolean> pageLoaded = new ExpectedCondition<Boolean>() {
-            @Override
-            public Boolean apply(WebDriver arg0) {
-                return ((JavascriptExecutor)driver).executeScript("return document.readyState").equals("complete");
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        boolean isCompleted = wait.until(new Function<WebDriver, Boolean>() {
+            public Boolean apply(WebDriver driver) {
+                return String.valueOf(((JavascriptExecutor) driver).executeScript("return document.readyState")).equals("complete");
             }
-        };
-        FluentWait<WebDriver> wait = new FluentWait<WebDriver>(driver);
-        wait.until(pageLoaded);
+        });
+        System.out.println("is completed? " + isCompleted);
     }
 
     public static void testFluentWait(WebDriver driver) {
