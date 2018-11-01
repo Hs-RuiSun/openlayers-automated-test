@@ -1,41 +1,43 @@
 package com.cgi.selenium.angular;
 
+import com.cgi.selenium.Config;
 import com.paulhammant.ngwebdriver.ByAngular;
 import com.paulhammant.ngwebdriver.NgWebDriver;
-import org.junit.Ignore;
 import org.junit.Test;
-import org.openqa.selenium.Alert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.WebDriverException;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.interactions.Actions;
-import org.seleniumhq.selenium.fluent.FluentBy;
-import org.seleniumhq.selenium.fluent.FluentExecutionStopped;
-import org.seleniumhq.selenium.fluent.FluentMatcher;
-import org.seleniumhq.selenium.fluent.FluentWebDriver;
-import org.seleniumhq.selenium.fluent.FluentWebElement;
-import org.seleniumhq.selenium.fluent.FluentWebElementMap;
-import org.seleniumhq.selenium.fluent.FluentWebElements;
-import org.testng.annotations.AfterSuite;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeSuite;
+import org.junit.runner.RunWith;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.TimeUnit;
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(classes = Config.class)
+public class NgWebDriverTest {
+    @Autowired
+    private WebDriver driver;
+    
+    @Test
+    public void testNgWebDriver() throws InterruptedException {
+        
+        driver.get("https://hello-angularjs.appspot.com/sorttablecolumn");
+        NgWebDriver ngdriver = new NgWebDriver((JavascriptExecutor) driver);
+        
+        driver.findElement(ByAngular.model("name")).sendKeys("Test Company");
+        driver.findElement(ByAngular.model("employees")).sendKeys("1000");
+        driver.findElement(ByAngular.model("headoffice")).sendKeys("Mysore");
+        driver.findElement(ByAngular.buttonText("Submit")).click();
+        
+        Thread.sleep(2000);
+        String txt = driver.findElement(ByAngular.repeater("company in companies").row(4).column("name")).getText();
+        System.out.println(txt + " Added.");
+        
+        if(txt.equalsIgnoreCase("Test Company")){
+            System.out.println("New Company Added. Now remove it");
+            driver.findElement(ByAngular.repeater("company in companies").row(4)).findElement(ByAngular.buttonText("Remove")).click();
+        }
 
-import static org.hamcrest.CoreMatchers.containsString;
-import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.CoreMatchers.startsWith;
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.endsWith;
-import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.hasItems;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
-
-public class NgWebDriverTest {}
+        Thread.sleep(3000);
+        driver.quit();
+    }
+}
