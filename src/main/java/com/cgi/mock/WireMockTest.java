@@ -19,7 +19,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @ContextConfiguration( classes = Config.class )
 @RunWith(SpringJUnit4ClassRunner.class)
-@TestPropertySource(locations = "classpath:/config.properties")
+@TestPropertySource(locations = "classpath:/config-test.properties")
 public class WireMockTest {
     @Autowired
     private WireMockServer wireMockServer;
@@ -27,7 +27,7 @@ public class WireMockTest {
     @Test
     public void testResponse() throws UnirestException {
         String responseText = "hey, it works";
-        String url = "http://localhost:9001/wiremock";
+        String url = "http://localhost:9002/wiremock";
         wireMockServer.stubFor(get(urlMatching("/wiremock.*")).atPriority(Integer.MAX_VALUE)
                 .willReturn(aResponse().withBody(responseText)));
         
