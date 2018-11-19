@@ -1,6 +1,7 @@
 package com.cgi.mock;
 
 import com.github.tomakehurst.wiremock.WireMockServer;
+import com.github.tomakehurst.wiremock.client.WireMock;
 import com.github.tomakehurst.wiremock.http.RequestMethod;
 import org.junit.rules.TestRule;
 import org.junit.runner.Description;
@@ -20,6 +21,9 @@ public class WireMockStub implements TestRule{
                 .willReturn(aResponse().withBody(responseText)));
         wireMockServer.stubFor(any(urlMatching("/aircraft.*")).atPriority(Integer.MAX_VALUE)
                 .willReturn(aResponse().withBody(responseJson)));
+        wireMockServer.stubFor(post(urlMatching("/aircraft.*")).atPriority(Integer.MAX_VALUE)
+                .willReturn(aResponse().withBody("{{request.body}}")
+                .withTransformers("response-template")));
     }
     
     public void update(WireMockServer wireMockServer, RequestMethod method, String uri, String responseBody) {

@@ -5,10 +5,14 @@ import com.github.tomakehurst.wiremock.client.WireMock;
 import com.github.tomakehurst.wiremock.common.ConsoleNotifier;
 import com.github.tomakehurst.wiremock.core.Options;
 import com.github.tomakehurst.wiremock.core.WireMockConfiguration;
+import com.github.tomakehurst.wiremock.extension.responsetemplating.ResponseTemplateTransformer;
+import com.github.tomakehurst.wiremock.junit.WireMockRule;
+import org.junit.Rule;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
+import static com.github.tomakehurst.wiremock.client.WireMock.options;
 
 @Configuration
 @PropertySource( "classpath:/config.properties" )
@@ -39,6 +43,7 @@ public class Config {
         }
 
         wireMockConfiguration.disableRequestJournal();
+        wireMockConfiguration.extensions(new ResponseTemplateTransformer(false));
         return wireMockConfiguration;
     }
     

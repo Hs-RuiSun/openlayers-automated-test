@@ -4,16 +4,20 @@ import com.cgi.junit.Aircraft;
 import com.cgi.mock.WireMockStub;
 import com.cgi.spring.Config;
 import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.tomakehurst.wiremock.WireMockServer;
+import com.github.tomakehurst.wiremock.extension.responsetemplating.ResponseTemplateTransformer;
 import com.github.tomakehurst.wiremock.http.RequestMethod;
+import com.github.tomakehurst.wiremock.junit.WireMockRule;
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.JsonNode;
 import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
@@ -35,6 +39,7 @@ import static org.junit.Assert.assertNotNull;
 public class JUnirest {
     @Rule
     public WireMockStub wireMockStub = new WireMockStub();
+    
     @Autowired
     private WireMockServer wireMockServer;
     
@@ -47,11 +52,19 @@ public class JUnirest {
     }
     
     @Test
-    public void testPost() {
-        
+    public void testPost() throws UnirestException, JsonProcessingException {
+        Aircraft aircraft = new Aircraft(1, "LFBO", "LFBT", true);
+        String json = (new ObjectMapper()).writeValueAsString(aircraft);
+        HttpResponse<String> response = Unirest.post(url + "/aircraft.*")
+                .header("Content-type", "application/json")
+                .body(json)
+                .asString();
+        assertNotNull(response);
+        System.out.println(response.getBody());
     }
     
     @Test
+    @Ignore
     public void testGetJson() throws UnirestException, JsonParseException, JsonMappingException, IOException {
         String responseJson = "[{\"id\":307913,\"ori\":\"LFBO\",\"dst\":\"LFBT\",\"tracked\":true},"
                 + "{\"id\":305962,\"ori\":\"LFBO\",\"dst\":\"LFRZ\",\"tracked\":true}]";
@@ -64,6 +77,7 @@ public class JUnirest {
     }
     
     @Test
+    @Ignore
     public void testGet() throws UnirestException {
         String responseText = "hey, it works";
         wireMockStub.update(wireMockServer, RequestMethod.GET, "/wiremock.*", responseText);
