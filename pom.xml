@@ -3,11 +3,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.cgi</groupId>
-	<artifactId>openlayers-automated-test</artifactId>
+	<artifactId>automated-test</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>openlayers-automated-test</name>
+	<name>automated-test</name>
 	<url>http://maven.apache.org</url>
 
 	<properties>
