@@ -28,7 +28,7 @@ import static com.cgi.junit.IsAPositiveInteger.isAPositiveInteger;
  * make assertions more descriptive and readable
  */
 public class JHamcrest {
-	Caculator caculator = new Caculator();
+	Calculator caculator = new Calculator();
 	
 	@Test
 	public void testMatchers() {
@@ -38,8 +38,8 @@ public class JHamcrest {
 		assertThat("foo", not(equalToIgnoringWhiteSpace(" Fooe")));
 		
 		//bean
-		Foo foo = new Foo(0, "Bike", false);
-		Foo cloneFoo = new Foo(0, "Bike", false);
+		Calculator foo = new Calculator(0, "Bike", false);
+		Calculator cloneFoo = new Calculator(0, "Bike", false);
 		//hasProperty() works when the object has all the getter methods
 		assertThat(foo, hasProperty("name"));
 		assertThat(foo, hasProperty("name", equalTo("Bike")));

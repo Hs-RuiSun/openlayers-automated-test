@@ -15,21 +15,21 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 public class SpringDependencyInjectTest {
     /*//field injection
     @Autowired*/
-    private Foo foo;
-    /*private SpringDependencyInjectTest(Foo foo) {
-        this.foo = foo;
+    private Calculator calculator;
+    /*private SpringDependencyInjectTest(Caculator caculator) {
+        this.caculator = caculator;
     }*/
     
     @Test
     public void testSpringDependencyInject() {
-        System.out.println(foo.name);
+        System.out.println(calculator.name);
     }
 
-    public Foo getFoo() {
-        return foo;
+    public Calculator getCalculator() {
+        return calculator;
     }
 
-    public void setFoo(Foo foo) {
-        this.foo = foo;
+    public void setCalculator(Calculator calculator) {
+        this.calculator = calculator;
     }
 }

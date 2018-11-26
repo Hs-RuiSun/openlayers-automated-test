@@ -1,6 +1,6 @@
 package com.cgi.http;
 
-import com.cgi.junit.Foo;
+import com.cgi.junit.Calculator;
 import com.cgi.mock.WireMockStub;
 import com.cgi.spring.Config;
 import com.fasterxml.jackson.core.JsonParseException;
@@ -59,7 +59,7 @@ public class JUnirest {
         
         HttpResponse<JsonNode> httpResponse = Unirest.get(url + "/aircraft").asJson();
         ObjectMapper mapper = new ObjectMapper();
-        List<Foo> list = mapper.readValue(httpResponse.getRawBody(), new TypeReference<List<Foo>>(){ });
+        List<Calculator> list = mapper.readValue(httpResponse.getRawBody(), new TypeReference<List<Calculator>>(){ });
         assertEquals(2, list.size());
     }
     
