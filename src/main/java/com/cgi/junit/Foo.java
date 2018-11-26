@@ -10,4 +10,18 @@ public class Foo {
         this.name = name;
         this.female = female;
     }
+
+	public int getAge() {
+		return age;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public boolean isFemale() {
+		return female;
+	}
+    
+    
 }
