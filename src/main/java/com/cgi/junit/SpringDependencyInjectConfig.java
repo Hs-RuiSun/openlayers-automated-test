@@ -7,6 +7,6 @@ import org.springframework.context.annotation.Configuration;
 public class SpringDependencyInjectConfig {
     @Bean
     public Foo foo() {
-        return new Foo(1, "SpringDependencyInjection");
+        return new Foo(1, "SpringDependencyInjection", false);
     }
 }

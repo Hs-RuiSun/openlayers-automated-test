@@ -15,6 +15,6 @@ public class FooParameterResolver implements ParameterResolver {
     @Override
     public Object resolveParameter(ParameterContext parameterContext, ExtensionContext extensionContext)
             throws ParameterResolutionException {
-        return new Foo(5, "Foo");
+        return new Foo(5, "Foo", false);
     }
 }

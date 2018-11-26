@@ -1,6 +1,6 @@
 package com.cgi.http;
 
-import com.cgi.junit.Aircraft;
+import com.cgi.junit.Foo;
 import com.cgi.mock.WireMockStub;
 import com.cgi.spring.Config;
 import com.fasterxml.jackson.core.JsonParseException;
@@ -53,13 +53,13 @@ public class JUnirest {
     
     @Test
     public void testGetJson() throws UnirestException, JsonParseException, JsonMappingException, IOException {
-        String responseJson = "[{\"id\":307913,\"ori\":\"LFBO\",\"dst\":\"LFBT\",\"tracked\":true},"
-                + "{\"id\":305962,\"ori\":\"LFBO\",\"dst\":\"LFRZ\",\"tracked\":true}]";
+        String responseJson = "[{\"age\":11,\"name\":\"LFBO\",\"female\":true},"
+                + "{\"age\":33,\"name\":\"LFBO\",\"female\":true}]";
         wireMockStub.update(wireMockServer, RequestMethod.GET, "/aircraft.*", responseJson);
         
         HttpResponse<JsonNode> httpResponse = Unirest.get(url + "/aircraft").asJson();
         ObjectMapper mapper = new ObjectMapper();
-        List<Aircraft> list = mapper.readValue(httpResponse.getRawBody(), new TypeReference<List<Aircraft>>(){ });
+        List<Foo> list = mapper.readValue(httpResponse.getRawBody(), new TypeReference<List<Foo>>(){ });
         assertEquals(2, list.size());
     }
     
