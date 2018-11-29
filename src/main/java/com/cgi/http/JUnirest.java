@@ -1,8 +1,8 @@
 package com.cgi.http;
 
 import com.cgi.junit.Calculator;
-import com.cgi.mock.WireMockStub;
 import com.cgi.spring.Config;
+import com.cgi.wiremock.WireMockStub;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonMappingException;

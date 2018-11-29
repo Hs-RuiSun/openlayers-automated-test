@@ -1,4 +1,4 @@
-package com.cgi.mock;
+package com.cgi.wiremock;
 
 import com.github.tomakehurst.wiremock.WireMockServer;
 import com.github.tomakehurst.wiremock.http.RequestMethod;
