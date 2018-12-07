@@ -31,7 +31,7 @@ import java.util.logging.Level;
 
 public class DriverLog {
     private static WebDriver driver;
-    
+
     public void setUp() throws Exception {
         DesiredCapabilities caps = DesiredCapabilities.chrome();
         LoggingPreferences logPrefs = new LoggingPreferences();
@@ -43,7 +43,7 @@ public class DriverLog {
         /*System.setProperty("webdriver.gecko.driver", "C:\\Drivers\\geckodriver.exe");
         driver = new Augmenter().augment(new FirefoxDriver(caps));*/
     }
-    
+
     public static void main(String[] argv) throws Exception {
         DriverLog profiler = new DriverLog();
         profiler.setUp();
@@ -53,14 +53,13 @@ public class DriverLog {
              * method-1: run JavaScript
              */
             String scriptToExecute = "var performance = window.performance || window.mozPerformance || window.msPerformance || window.webkitPerformance || {}; var network = performance.getEntries() || {}; return network;";
-            String netData = ((JavascriptExecutor)driver).executeScript(scriptToExecute).toString();
+            String netData = ((JavascriptExecutor) driver).executeScript(scriptToExecute).toString();
             System.out.println(netData);
-        }
-        finally {
+        } finally {
             profiler.tearDown();
         }
     }
-    
+
     public void ntracking() {
         driver.get("http://192.168.1.138:2020/#!/map");
         new WebDriverWait(driver, 10).until(ExpectedConditions.invisibilityOfAllElements(driver.findElement(By.xpath("//*[@id=\"username\"]"))));
@@ -82,8 +81,7 @@ public class DriverLog {
             List<LogEntry> entries = driver.manage().logs().get(LogType.PROFILER).getAll();
             System.out.println("Is profiler log empty? " + entries.size());
             printLog(LogType.BROWSER);
-        }
-        finally {
+        } finally {
             driver.quit();
         }
     }
@@ -95,10 +93,10 @@ public class DriverLog {
         for (LogEntry entry : entries) {
             //JSONObject message = new JSONObject(entry.getMessage());
             //JSONObject devToolsMessage = message.getJSONObject("message");
-            
+
             //if(devToolsMessage.getString("method").equals("Network.responseReceived")) {
-                //System.out.println(new Date(entry.getTimestamp()) + " " + entry.getLevel() + " " + entry.getMessage());
-                br.write(entry.getMessage() + "\r\n");
+            //System.out.println(new Date(entry.getTimestamp()) + " " + entry.getLevel() + " " + entry.getMessage());
+            br.write(entry.getMessage() + "\r\n");
             //}
         }
         br.flush();

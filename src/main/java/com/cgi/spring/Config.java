@@ -11,7 +11,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 
 @Configuration
-@PropertySource( "classpath:/config.properties" )
+@PropertySource("classpath:/config.properties")
 public class Config {
     @Bean
     public Options wireMockOptions(
@@ -23,8 +23,7 @@ public class Config {
         WireMockConfiguration wireMockConfiguration = new WireMockConfiguration();
         if ("https".equalsIgnoreCase(protocol)) {
             wireMockConfiguration.httpsPort(port);
-        }
-        else {
+        } else {
             wireMockConfiguration.port(port);
         }
         wireMockConfiguration.containerThreads(containerThreads);
@@ -41,12 +40,12 @@ public class Config {
         wireMockConfiguration.disableRequestJournal();
         return wireMockConfiguration;
     }
-    
+
     @Bean(initMethod = "start", destroyMethod = "stop")
     public WireMockServer wireMockServer(Options wireMockOptions) {
         return new WireMockServer(wireMockOptions);
     }
-    
+
     @Bean
     public WireMock wireMock(WireMockServer wireMockServer) {
         return new WireMock(wireMockServer);

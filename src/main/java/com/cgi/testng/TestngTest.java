@@ -23,7 +23,7 @@ import java.util.Iterator;
 public class TestngTest {
     private ExtentReports extent;
     private ExtentHtmlReporter htmlReporter;
-    
+
     @BeforeClass
     public void setupBeforeClass(ITestContext context) {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MMM-dd_hhmmss");
@@ -33,36 +33,36 @@ public class TestngTest {
         extent = new ExtentReports();
         extent.attachReporter(htmlReporter);
     }
-    
+
     @AfterClass
     public void tearDown() {
         extent.flush();
     }
-    
+
     public void testngXml() {
-        
+
     }
-    
-    @DataProvider(name="multipleParameters")
-    public static Object[][] multipleParameters(){
-        return new Object[][] {{1, "haha"},{2, "hahaha"}};
+
+    @DataProvider(name = "multipleParameters")
+    public static Object[][] multipleParameters() {
+        return new Object[][]{{1, "haha"}, {2, "hahaha"}};
     }
-    
+
     @DataProvider(name = "testData")
-    public static Iterator<Object[]> dataProvider(){
+    public static Iterator<Object[]> dataProvider() {
         Collection<Object[]> ret = new ArrayList<Object[]>();
         Object[] testData = {1, "test dataProvider"};
         ret.add(testData);
         //.......
         return ret.iterator();
     }
-    
+
     @Test(dataProvider = "multipleParameters")
     public void dataProviderTest(int caseId, String testCase) {
         ExtentTest extentTest = extent.createTest("dataProviderTest");
         extentTest.log(Status.INFO, "going well");
     }
-    
+
     @Test
     @Parameters({"userName", "password"})
     public void parameterTest(String userName, String password) {

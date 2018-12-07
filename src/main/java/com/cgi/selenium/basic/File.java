@@ -14,9 +14,11 @@ public class File {
         driver.findElement(By.id("terms")).click();
         driver.findElement(By.name("send")).click();
     }
+
     public void download(WebDriver driver) {
-        
+
     }
+
     public static void main(String[] args) {
         System.setProperty("webdriver.chrome.driver", "C:\\Drivers\\chromedriver.exe");
         WebDriver driver = new ChromeDriver();

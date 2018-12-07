@@ -16,33 +16,33 @@ import org.junit.runners.Parameterized.Parameters;
 
 @RunWith(value = Parameterized.class)
 public class JunitParameterizedTest {
-	int numA;
-	int numB;
-	int expected;
-	
-	@Parameters
-	public Collection<Object[]> data(){
-		return Arrays.asList(new Object[][] {
-			{1, 2, 3},
-			{0, 1, 1},
-			{-1, 4, 3}
-		});
-	}
-	
-	@Test
-	public void testAdd() {
-		assertEquals(expected, MathUtils.add(numA, numB));
-	}
+    int numA;
+    int numB;
+    int expected;
+
+    @Parameters
+    public Collection<Object[]> data() {
+        return Arrays.asList(new Object[][]{
+                {1, 2, 3},
+                {0, 1, 1},
+                {-1, 4, 3}
+        });
+    }
+
+    @Test
+    public void testAdd() {
+        assertEquals(expected, MathUtils.add(numA, numB));
+    }
 
     @ParameterizedTest
-    @ValueSource( strings = {"junit4", "junit5"} )
+    @ValueSource(strings = {"junit4", "junit5"})
     public void singleParameter(String username) {
         System.out.println(username);
     }
 }
 
-class MathUtils{
-	public static int add(int a, int b) {
-		return a+b;
-	}
+class MathUtils {
+    public static int add(int a, int b) {
+        return a + b;
+    }
 }

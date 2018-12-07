@@ -49,14 +49,11 @@ public class RightClickExample {
             action.build().perform();
 
             System.out.println("Sucessfully Right clicked on the element");
-        }
-        catch (StaleElementReferenceException e) {
+        } catch (StaleElementReferenceException e) {
             System.out.println("Element is not attached to the page document " + e.getStackTrace());
-        }
-        catch (NoSuchElementException e) {
+        } catch (NoSuchElementException e) {
             System.out.println("Element " + element + " was not found in DOM " + e.getStackTrace());
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             System.out.println("Element " + element + " was not clickable " + e.getStackTrace());
         }
     }

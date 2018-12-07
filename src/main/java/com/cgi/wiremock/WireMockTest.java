@@ -17,25 +17,25 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
-@ContextConfiguration( classes = Config.class )
+@ContextConfiguration(classes = Config.class)
 @RunWith(SpringJUnit4ClassRunner.class)
 @TestPropertySource(locations = "classpath:/config-test.properties")
 public class WireMockTest {
     @Rule
     public WireMockStub wireMockStub = new WireMockStub();
-    
+
     @Autowired
     private WireMockServer wireMockServer;
-    
-    @Value("${wiremock.protocol}://${wiremock.domain}:${wiremock.port}") 
+
+    @Value("${wiremock.protocol}://${wiremock.domain}:${wiremock.port}")
     private String url;
-    
+
     @Test
     public void testResponse() throws UnirestException {
         String responseText = "hey, it works";
-        
+
         wireMockStub.config(wireMockServer);
-        
+
         assertNotNull(Unirest.get(url + "/wiremock").asString());
         HttpResponse<String> response = Unirest.get(url + "/wiremock").asString();
         assertEquals(responseText, response.getBody());

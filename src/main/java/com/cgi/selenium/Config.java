@@ -13,7 +13,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Configuration
-@ComponentScan(basePackages="com.cgi.selenium")
+@ComponentScan(basePackages = "com.cgi.selenium")
 public class Config {
     @Bean
     public ChromeOptions chromeOptions() {
@@ -28,16 +28,16 @@ public class Config {
         options.setExperimentalOption("prefs", prefs);
         return options;
     }
-    
+
     @Bean
     public WebDriver driver(ChromeOptions chromeOptions) {
         System.setProperty("webdriver.chrome.driver", "C:\\Drivers\\chromedriver.exe");
         WebDriver driver = new ChromeDriver(chromeOptions);
         return driver;
     }
-    
+
     public NgWebDriver ngWebDriver(WebDriver driver) {
-        NgWebDriver ngWebDriver = new NgWebDriver((JavascriptExecutor)driver);
+        NgWebDriver ngWebDriver = new NgWebDriver((JavascriptExecutor) driver);
         return ngWebDriver;
     }
 }

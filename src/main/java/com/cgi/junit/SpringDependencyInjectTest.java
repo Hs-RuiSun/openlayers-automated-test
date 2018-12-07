@@ -7,7 +7,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 /**
- * @RunWith and @ContextConfiguration 
+ * @RunWith and @ContextConfiguration
  * indicate that the class should use Spring's JUnit utilities and ApplicationContext
  */
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -19,7 +19,7 @@ public class SpringDependencyInjectTest {
     /*private SpringDependencyInjectTest(Caculator caculator) {
         this.caculator = caculator;
     }*/
-    
+
     @Test
     public void testSpringDependencyInject() {
         System.out.println(calculator.name);

@@ -11,7 +11,7 @@ import java.io.IOException;
 public class ExtentReport {
     public static void main(String[] args) throws IOException {
         ExtentReports extent = new ExtentReports();
-        
+
         ExtentHtmlReporter htmlReporter = new ExtentHtmlReporter("extent.html");
         extent.attachReporter(htmlReporter);
 
@@ -20,7 +20,7 @@ public class ExtentReport {
         test.info("This step shows usage of info(details)");
         test.fail("details", MediaEntityBuilder.createScreenCaptureFromPath("screenshot.png").build());
         test.addScreenCaptureFromPath("screenshot.png");
-        
+
         extent.flush();
     }
 }

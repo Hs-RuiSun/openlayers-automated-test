@@ -1,38 +1,39 @@
 package com.cgi.junit;
 
 public class Calculator {
-	Integer quantity;
-	String name;
-	boolean secondUsed;
-	
-	public Calculator() {}
-	
-	public Calculator(int quantity, String name, boolean secondUsed) {
-		super();
-		this.quantity = quantity;
-		this.name = name;
-		this.secondUsed = secondUsed;
-	}
+    Integer quantity;
+    String name;
+    boolean secondUsed;
 
-	public int add(int numA, int numB) {
-		return numA + numB;
-	}
+    public Calculator() {
+    }
 
-	public String getName() {
-		return name;
-	}
+    public Calculator(int quantity, String name, boolean secondUsed) {
+        super();
+        this.quantity = quantity;
+        this.name = name;
+        this.secondUsed = secondUsed;
+    }
 
-	public boolean isSecondUsed() {
-		return secondUsed;
-	}
+    public int add(int numA, int numB) {
+        return numA + numB;
+    }
 
-	public int getQuantity() {
-		return quantity;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public void setQuantity(int quantity) {
-		this.quantity = quantity;
-	}
+    public boolean isSecondUsed() {
+        return secondUsed;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
 
     public void setQuantity(Integer quantity) {
         this.quantity = quantity;

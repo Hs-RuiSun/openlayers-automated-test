@@ -35,7 +35,7 @@ public class DriverWait {
             public WebElement apply(WebDriver driver) {
                 try {
                     return driver.findElement(By.id("seleniumboxe"));
-                }finally {
+                } finally {
                     System.out.println(System.currentTimeMillis() - startTime);
                 }
             }

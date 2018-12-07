@@ -19,12 +19,12 @@ import java.util.List;
 
 /**
  * Used to read excel sheets
- *
  */
 public class ReadExcel {
     private static final Logger logger = Logger.getLogger(ReadExcel.class);
 
     private static String testSuiteFile;
+
     static {
         testSuiteFile = JOptionPane.showInputDialog("Test File Name: ");
     }
@@ -34,8 +34,7 @@ public class ReadExcel {
     /**
      * Constructs a collection based on sheet in an excel workbook
      *
-     * @param sheetName
-     *            Name of the excel sheet.
+     * @param sheetName Name of the excel sheet.
      */
     public ReadExcel(String sheetName) {
         data = parse(sheetName);
@@ -57,7 +56,6 @@ public class ReadExcel {
     }
 
     /**
-     *
      * @return collection of data in an excel workbook sheet
      */
     public Collection<Object[]> getData() {
@@ -73,9 +71,9 @@ public class ReadExcel {
         try {
             inputStream = new FileInputStream(excelFilePath + testSuiteFile + ".xlsx");
             workbook = new XSSFWorkbook(inputStream);
-        }catch (FileNotFoundException e) {
+        } catch (FileNotFoundException e) {
             logger.error("Excel file not found.");
-        }catch (IOException e) {
+        } catch (IOException e) {
             logger.error("Can not read excel file.");
         }
 
@@ -93,28 +91,27 @@ public class ReadExcel {
                 if (cell == null) {
                     rowData.add(" ");
                     columnsAdded++;
-                }
-                else {
+                } else {
                     switch (cell.getCellTypeEnum()) {
-                        case STRING :
+                        case STRING:
                             rowData.add(cell.getStringCellValue());
                             columnsAdded++;
                             break;
-                        case BOOLEAN :
+                        case BOOLEAN:
                             rowData.add(String.valueOf(cell.getBooleanCellValue()));
                             columnsAdded++;
                             break;
-                        case NUMERIC :
+                        case NUMERIC:
                             rowData.add(String.valueOf((cell.getNumericCellValue())));
                             columnsAdded++;
                             break;
-                        case BLANK :
+                        case BLANK:
                             rowData.add(" ");
                             columnsAdded++;
                             break;
-                        case FORMULA :
+                        case FORMULA:
                             break;
-                        default :
+                        default:
                             ;
                     }
                 }
@@ -129,8 +126,7 @@ public class ReadExcel {
             try {
                 workbook.close();
                 inputStream.close();
-            }
-            catch (IOException e) {
+            } catch (IOException e) {
                 logger.error("Error closing workbook.");
             }
         }

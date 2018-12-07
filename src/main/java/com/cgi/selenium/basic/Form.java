@@ -9,33 +9,34 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
+
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class Form {
-    
+
     public static WebElement findElement(WebDriver driver) {
         driver.get("http://demo.guru99.com/test/delete_customer.php");
         WebElement element;
         try {
             element = driver.findElement(By.name("cuside"));
-        }catch(Exception e) {
+        } catch (Exception e) {
             System.out.println("will you come here?");
         }
         return null;
     }
-    
+
     public static void alert(WebDriver driver) {
-        driver.get("http://demo.guru99.com/test/delete_customer.php");          
-        driver.findElement(By.name("cusid")).sendKeys("53920");                 
-        driver.findElement(By.name("submit")).submit();         
-        Alert alert = driver.switchTo().alert();        
-        String alertMessage= driver.switchTo().alert().getText();
+        driver.get("http://demo.guru99.com/test/delete_customer.php");
+        driver.findElement(By.name("cusid")).sendKeys("53920");
+        driver.findElement(By.name("submit")).submit();
+        Alert alert = driver.switchTo().alert();
+        String alertMessage = driver.switchTo().alert().getText();
         driver.switchTo().alert().sendKeys("Text");
-        System.out.println(alertMessage);   
-        alert.accept(); 
+        System.out.println(alertMessage);
+        alert.accept();
     }
-    
+
     public static void link(WebDriver driver) {
         String baseUrl = "http://demo.guru99.com/test/newtours/";
         String underConsTitle = "Under Construction: Mercury Tours";
@@ -55,8 +56,7 @@ public class Form {
             driver.findElement(By.linkText(t)).click();
             if (driver.getTitle().equals(underConsTitle)) {
                 System.out.println("\"" + t + "\"" + " is under construction.");
-            }
-            else {
+            } else {
                 System.out.println("\"" + t + "\"" + " is working.");
             }
             driver.navigate().back();
@@ -75,7 +75,7 @@ public class Form {
         fruits.selectByIndex(1);
         System.out.println(driver.findElement(By.xpath("//*[@id=\"fruits\"]/option[1]")).getAttribute("checked"));
     }
-    
+
     public static void radioCheckbox(WebDriver driver) {
         driver.get("http://demo.guru99.com/test/radio.html");
         //input type=radio or type=checkbox
@@ -83,7 +83,7 @@ public class Form {
         for (WebElement element : list) {
             element.click();
         }
-        
+
         WebElement element = driver.findElement(By.id("vfb-6-1"));
         System.out.println(element.getAttribute("checked"));
     }

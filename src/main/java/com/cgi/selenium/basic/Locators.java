@@ -7,7 +7,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.FluentWait;
-import org.openqa.selenium.support.ui.Wait;import javax.xml.datatype.DatatypeConstants.Field;
+import org.openqa.selenium.support.ui.Wait;
+
+import javax.xml.datatype.DatatypeConstants.Field;
 
 import java.math.BigDecimal;
 import java.time.Duration;
@@ -19,7 +21,7 @@ public class Locators {
     public static void main(String[] args) {
         System.setProperty("webdriver.chrome.driver", "C:\\Drivers\\chromedriver.exe");
         WebDriver driver = new ChromeDriver();
-        
+
         Wait<WebDriver> wait = new FluentWait<WebDriver>(driver)
                 .withTimeout(30, TimeUnit.MILLISECONDS)
                 .pollingEvery(10, TimeUnit.MILLISECONDS)

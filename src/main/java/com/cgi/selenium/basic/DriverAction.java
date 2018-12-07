@@ -17,25 +17,25 @@ public class DriverAction {
         driver.get("http://demo.guru99.com/popup.php");
         WebElement element = driver.findElement(By.xpath("/html/body/p/a"));
         Point link = element.getLocation();
-        int x = link.getX()+2;
-        int y = link.getY()+2;
+        int x = link.getX() + 2;
+        int y = link.getY() + 2;
         driver.navigate().refresh();
-        Actions action= new Actions(driver);
+        Actions action = new Actions(driver);
         action.moveByOffset(x, y).click().build().perform();
     }
-    
+
     public static void openInANewTab(WebDriver driver) {
         driver.get("http://seleniumtutorialpoint.com/");
         WebElement element = driver.findElement(By.xpath("//*[@id=\"post-393\"]/div/div/ul/li[1]/strong/a"));
-        
-        Actions action= new Actions(driver);
+
+        Actions action = new Actions(driver);
         action.keyDown(Keys.CONTROL).sendKeys("t").keyUp(Keys.CONTROL).build().perform();
-        
+
         driver.findElement(By.cssSelector("body")).sendKeys(Keys.CONTROL + "t");
 
         //switching control to new tab
-        ArrayList<String> tabs2 = new ArrayList<String> (driver.getWindowHandles()); 
-        
+        ArrayList<String> tabs2 = new ArrayList<String>(driver.getWindowHandles());
+
         //action.contextClick(element).sendKeys(Keys.ARROW_DOWN).sendKeys(Keys.ARROW_DOWN).sendKeys(Keys.ENTER).build().perform();
        /* Actions mouseAction = new Actions(driver);
         Action openInNewTab = mouseAction.contextClick(element).sendKeys(Keys.ARROW_DOWN).sendKeys(Keys.ENTER).build();
@@ -43,7 +43,7 @@ public class DriverAction {
         /*Action openInNewWindow = mouseAction.contextClick(element).sendKeys(Keys.ARROW_DOWN).sendKeys(Keys.ARROW_DOWN).sendKeys(Keys.ENTER).build();
         openInNewWindow.perform();*/
     }
-    
+
     public static void dragDrop(WebDriver driver) {
         driver.get("http://www.dhtmlx.com/docs/products/dhtmlxTree/index.shtml");
         driver.manage().window().maximize();
@@ -53,12 +53,12 @@ public class DriverAction {
         WebElement To = driver.findElement(By.xpath(".//*[@id='treebox2']/div/table/tbody/tr[2]/td[2]/table/tbody/tr[2]/td[2]/table/tbody/tr[2]/td[2]/table/tbody/tr[1]/td[4]/span"));
 
         Action dragAndDrop = new Actions(driver).clickAndHold(From)
-                                                .moveToElement(To)
-                                                .release(To)
-                                                .build();
+                .moveToElement(To)
+                .release(To)
+                .build();
         dragAndDrop.perform();
     }
-    
+
     public static void mouse(WebDriver driver) {
         String url = "https://www.facebook.com/";
         driver.get(url);
@@ -81,7 +81,7 @@ public class DriverAction {
                 .build();
         seriesOfActions.perform();*/
     }
-    
+
     public static void main(String[] args) {
         // declaration and instantiation of objects/variables
         System.setProperty("webdriver.chrome.driver", "C:\\Drivers\\chromedriver.exe");

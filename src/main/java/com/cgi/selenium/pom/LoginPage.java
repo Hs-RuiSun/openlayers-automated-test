@@ -12,23 +12,23 @@ import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
-public class LoginPage extends PageObject{
-    @FindBy(id="username")
+public class LoginPage extends PageObject {
+    @FindBy(id = "username")
     private WebElement username;
-    
-    @FindBy(id="password")
+
+    @FindBy(id = "password")
     private WebElement password;
-    
-    @FindBy(xpath="//*[@id=\"formLogin\"]/div[2]/div[4]/label")
+
+    @FindBy(xpath = "//*[@id=\"formLogin\"]/div[2]/div[4]/label")
     private WebElement remember;
-    
-    @FindBy(xpath="//*[@id=\"formLogin\"]/div[2]/div[5]/div[1]/button")
+
+    @FindBy(xpath = "//*[@id=\"formLogin\"]/div[2]/div[5]/div[1]/button")
     private WebElement submit;
 
     public LoginPage(WebDriver driver) {
         super(driver);
     }
-    
+
     public void enter(String username, String password) {
         (new WebDriverWait(driver, 20)).until(ExpectedConditions.visibilityOf(this.username));
         this.username.clear();
@@ -36,20 +36,20 @@ public class LoginPage extends PageObject{
         this.password.clear();
         this.password.sendKeys(password);
     }
-    
+
     public void rememberMe() {
         this.remember.click();
     }
-    
+
     public void login() {
         this.submit.click();
     }
-    
+
     public void lostPassword() {
-        
+
     }
 
     public void signUp() {
-        
+
     }
 }

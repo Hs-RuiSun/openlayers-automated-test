@@ -30,44 +30,45 @@ import java.util.List;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
-@ContextConfiguration( classes = Config.class )
+@ContextConfiguration(classes = Config.class)
 @RunWith(SpringJUnit4ClassRunner.class)
 public class JUnirest {
     @Rule
     public WireMockStub wireMockStub = new WireMockStub();
     @Autowired
     private WireMockServer wireMockServer;
-    
-    @Value("${wiremock.protocol}://${wiremock.domain}:${wiremock.port}") 
+
+    @Value("${wiremock.protocol}://${wiremock.domain}:${wiremock.port}")
     private String url;
-    
+
     @Before
     public void setUp() {
         wireMockStub.config(wireMockServer);
     }
-    
+
     @Test
     public void testPost() {
-        
+
     }
-    
+
     @Test
     public void testGetJson() throws UnirestException, JsonParseException, JsonMappingException, IOException {
         String responseJson = "[{\"age\":11,\"name\":\"LFBO\",\"female\":true},"
                 + "{\"age\":33,\"name\":\"LFBO\",\"female\":true}]";
         wireMockStub.update(wireMockServer, RequestMethod.GET, "/aircraft.*", responseJson);
-        
+
         HttpResponse<JsonNode> httpResponse = Unirest.get(url + "/aircraft").asJson();
         ObjectMapper mapper = new ObjectMapper();
-        List<Calculator> list = mapper.readValue(httpResponse.getRawBody(), new TypeReference<List<Calculator>>(){ });
+        List<Calculator> list = mapper.readValue(httpResponse.getRawBody(), new TypeReference<List<Calculator>>() {
+        });
         assertEquals(2, list.size());
     }
-    
+
     @Test
     public void testGet() throws UnirestException {
         String responseText = "hey, it works";
         wireMockStub.update(wireMockServer, RequestMethod.GET, "/wiremock.*", responseText);
-        
+
         HttpResponse<String> httpResponse = Unirest.get(url + "/wiremock").asString();
         assertEquals(200, httpResponse.getStatus());
         assertNotNull(httpResponse.getBody());

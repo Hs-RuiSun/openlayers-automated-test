@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <suite name="Test-method Suite" parallel="methods" thread-count="1">
-	<test name="super user" group-by-instances="false">
-	  	<parameter name="selenium.browser" value="chrome" />
-	  	<parameter name="selenium.url" value="http://www.facebook.com/" />
-	  	<parameter name="userName" value="hahahaha"/>
-	  	<parameter name="password" value="hahahaha"/>
-		<classes>
-			<class name="com.cgi.testng.TestngTest"/> 
-		</classes>
-	</test>
-	
-	<test name="admin" group-by-instances="false">
-	  	<parameter name="selenium.browser" value="chrome" />
-	  	<parameter name="selenium.url" value="http://www.facebook.com/" />
-	  	<parameter name="userName" value="haha"/>
-	  	<parameter name="password" value="haha"/>
-		<classes>
-			<class name="com.cgi.testng.TestngTest"/> 
-		</classes>
-	</test>
+    <test name="super user" group-by-instances="false">
+        <parameter name="selenium.browser" value="chrome"/>
+        <parameter name="selenium.url" value="http://www.facebook.com/"/>
+        <parameter name="userName" value="hahahaha"/>
+        <parameter name="password" value="hahahaha"/>
+        <classes>
+            <class name="com.cgi.testng.TestngTest"/>
+        </classes>
+    </test>
+
+    <test name="admin" group-by-instances="false">
+        <parameter name="selenium.browser" value="chrome"/>
+        <parameter name="selenium.url" value="http://www.facebook.com/"/>
+        <parameter name="userName" value="haha"/>
+        <parameter name="password" value="haha"/>
+        <classes>
+            <class name="com.cgi.testng.TestngTest"/>
+        </classes>
+    </test>
 </suite>

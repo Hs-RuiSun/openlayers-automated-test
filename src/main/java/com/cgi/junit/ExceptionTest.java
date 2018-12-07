@@ -7,13 +7,14 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.rules.ExpectedException;
 
 import java.util.ArrayList;
+
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.fail;
 
 /**
  * verify code throws exceptions as expected
- * 
+ *
  * @author ruby.sun Aug 1, 2018
  */
 public class ExceptionTest {
@@ -36,7 +37,7 @@ public class ExceptionTest {
     @Rule
     public ExpectedException thrown = ExpectedException.none();
 
-    @Test( expected = IndexOutOfBoundsException.class )
+    @Test(expected = IndexOutOfBoundsException.class)
     public void empty() {
         new ArrayList<>().get(0);
     }
@@ -46,8 +47,7 @@ public class ExceptionTest {
         try {
             new ArrayList<>().get(0);
             fail("expect an IndexOutOfBoundsException to be thrown");
-        }
-        catch (IndexOutOfBoundsException e) {
+        } catch (IndexOutOfBoundsException e) {
             assertThat(e.getMessage(), is("Index: 0, Size: 0"));
         }
     }

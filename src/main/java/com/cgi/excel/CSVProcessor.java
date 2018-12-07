@@ -57,13 +57,13 @@ public class CSVProcessor {
                     for (int cellIndex = 0; cellIndex < cellValueArray.length; cellIndex++) {
                         Cell cell = row.createCell(cellIndex);
                         switch (cellIndex) {
-                            case 0 :
-                            case 1 :
-                            case 2 :
+                            case 0:
+                            case 1:
+                            case 2:
                                 cell.setCellValue(Integer.parseInt(cellValueArray[cellIndex]));
                                 break;
-                            case 3 :
-                            case 4 :
+                            case 3:
+                            case 4:
                                 cell.setCellValue(Double.parseDouble(cellValueArray[cellIndex]));
                                 break;
                         }
@@ -86,8 +86,7 @@ public class CSVProcessor {
                 }
                 sheetIndex++;
             }
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 

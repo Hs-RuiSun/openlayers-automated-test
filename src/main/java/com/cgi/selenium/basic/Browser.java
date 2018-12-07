@@ -24,20 +24,21 @@ public class Browser {
         WebDriver driver = new FirefoxDriver();
         driver.get("file:///C:/Users/ruby.sun/Downloads/selenium.html");
         WebElement element = driver.findElement(By.linkText("facebook"));
-        
-        Actions action= new Actions(driver);
+
+        Actions action = new Actions(driver);
         action.contextClick(element).sendKeys(Keys.ARROW_DOWN).sendKeys(Keys.ARROW_DOWN).sendKeys(Keys.RETURN).build().perform();
     }
+
     public static void cannotFindElement(WebDriver driver) {
         driver.get("http://www.facebook.com");
         try {
             WebElement element = driver.findElement(By.xpath("//*[@id='elementId']"));
-        }catch(NoSuchElementException e) {
-             System.out.println("catch exception");
+        } catch (NoSuchElementException e) {
+            System.out.println("catch exception");
         }
         System.out.println("code disappears");
-    } 
-    
+    }
+
     public static void multipleWindows(WebDriver driver) {
         driver.get("http://demo.guru99.com/popup.php");
         driver.manage().window().maximize();
@@ -78,6 +79,7 @@ public class Browser {
     /**
      * 1. window.scrollBy
      * 2. scroll a specific element into view
+     *
      * @param driver
      * @throws InterruptedException
      */
@@ -90,11 +92,11 @@ public class Browser {
         jse.executeScript("window.scrollBy(0,4500)", ""); //scroll down
         Thread.sleep(3000);
         jse.executeScript("window.scrollBy(0, -1000)", ""); //scroll up
-         */        
-        
+         */
+
         //WebElement element = driver.findElement(By.xpath(".//*[@id='mCSB_3_container']/p[3]"));
         WebElement element = driver.findElement(By.xpath("//*[@id=\"mCSB_1_container\"]/p[8]/img"));
-        jse.executeScript("arguments[0].scrollIntoView(true);",element);
+        jse.executeScript("arguments[0].scrollIntoView(true);", element);
         System.out.println(element.getText());
     }
 
@@ -106,7 +108,7 @@ public class Browser {
     public static void main(String[] args) throws InterruptedException {
         System.setProperty("webdriver.chrome.driver", "C:\\Drivers\\chromedriver.exe");
         WebDriver driver = new ChromeDriver();
-        
+
         /* System.setProperty("webdriver.gecko.driver", "C:\\Drivers\\geckodriver.exe"); WebDriver driver = new
          * FirefoxDriver();
          */
@@ -114,7 +116,7 @@ public class Browser {
         scroll(driver);
         createScreenShot(driver);*/
         //multipleWindows(driver);
-        switchTab(driver);
+        navigate(driver);
         //firefox();
     }
 }
