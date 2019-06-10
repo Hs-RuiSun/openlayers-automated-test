@@ -1,50 +1,63 @@
 package com.cgi.junit;
 
-import org.junit.jupiter.api.Test;
+import org.apache.commons.lang3.StringUtils;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
+import org.junit.jupiter.params.provider.*;
 
-import java.util.Arrays;
-import java.util.Collection;
+import java.util.stream.Stream;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * execute a single test multiple times with different parameters
  */
 public class JunitParameterizedTest {
-    private int numA;
-    private int numB;
-    private int expected;
-
-    public JunitParameterizedTest(int numA, int numB, int expected) {
-        this.numA = numA;
-        this.numB = numB;
-        this.expected = expected;
-    }
-
-    public static Collection<Object[]> data() {
-        return Arrays.asList(
-                new Object[]{1, 2, 3},
-                new Object[]{0, 1, 1},
-                new Object[]{-1, 4, 3}
+    private static Stream<Arguments> provideStringsForIsBlank() {
+        return Stream.of(
+                Arguments.of(null, true),
+                Arguments.of("", true),
+                Arguments.of("  ", true),
+                Arguments.of("not blank", false)
         );
     }
-
-    @Test
-    public void testAdd() {
-        assertEquals(expected, MathUtils.add(numA, numB));
+    @ParameterizedTest
+    @NullSource
+    void isBlank_ShouldReturnTrueForNullInputs(String input) {
+        assertTrue(StringUtils.isBlank(input));
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"junit4", "junit5"})
-    public void singleParameter(String username) {
-        System.out.println(username);
+    @EmptySource
+    void isBlank_ShouldReturnTrueForEmptyStrings(String input) {
+        assertTrue(StringUtils.isBlank(input));
     }
-}
 
-class MathUtils {
-    public static int add(int a, int b) {
-        return a + b;
+    @ParameterizedTest
+    @EnumSource(Days.class)
+    void testEunumSource(Days day) {
+        System.out.println(day);
+    }
+
+    @ParameterizedTest
+    @CsvSource({"test,TEST", "tEst,TEST", "Java,JAVA"})
+    void toUpperCase_ShouldGenerateTheExpectedUppercaseValue(String input, String expected) {
+        String actualValue = input.toUpperCase();
+        assertEquals(expected, actualValue);
+    }
+
+    @ParameterizedTest
+    @MethodSource("provideStringsForIsBlank")
+    void testMethodSource(String input, boolean expected){
+        assertEquals(expected, StringUtils.isBlank(input));
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"", "  "})
+    void isBlank_ShouldReturnTrueForNullOrBlankStrings(String input) {
+        assertTrue(StringUtils.isBlank(input));
+    }
+
+    enum Days{
+        MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY
     }
 }
