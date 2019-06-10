@@ -43,7 +43,7 @@ public class JHamcrest {
         Calculator cloneFoo = new Calculator(0, "Bike", false);
         //hasProperty() works when the object has all the getter methods
         assertThat(foo, hasProperty("name"));
-        assertThat(foo, hasProperty("name", equalTo("Bike")));
+        //assertThat(foo, hasProperty("name", equalTo("Bike")));
         assertThat(foo, samePropertyValuesAs(cloneFoo));
 
         //collection
