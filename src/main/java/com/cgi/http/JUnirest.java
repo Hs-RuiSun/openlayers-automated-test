@@ -3,9 +3,7 @@ package com.cgi.http;
 import com.cgi.junit.Calculator;
 import com.cgi.spring.Config;
 import com.cgi.wiremock.WireMockStub;
-import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.tomakehurst.wiremock.WireMockServer;
 import com.github.tomakehurst.wiremock.http.RequestMethod;
@@ -13,35 +11,33 @@ import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.JsonNode;
 import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
-import org.junit.Before;
-import org.junit.Rule;
-import org.junit.Test;
-import org.junit.rules.ExpectedException;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import wiremock.com.google.common.collect.Lists;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.io.IOException;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @ContextConfiguration(classes = Config.class)
-@RunWith(SpringJUnit4ClassRunner.class)
+@ExtendWith({SpringExtension.class})
 public class JUnirest {
-    @Rule
-    public WireMockStub wireMockStub = new WireMockStub();
     @Autowired
     private WireMockServer wireMockServer;
+
+    @Autowired
+    private WireMockStub wireMockStub;
 
     @Value("${wiremock.protocol}://${wiremock.domain}:${wiremock.port}")
     private String url;
 
-    @Before
+    @BeforeAll
     public void setUp() {
         wireMockStub.config(wireMockServer);
     }
@@ -52,7 +48,7 @@ public class JUnirest {
     }
 
     @Test
-    public void testGetJson() throws UnirestException, JsonParseException, JsonMappingException, IOException {
+    public void testGetJson() throws UnirestException, IOException {
         String responseJson = "[{\"age\":11,\"name\":\"LFBO\",\"female\":true},"
                 + "{\"age\":33,\"name\":\"LFBO\",\"female\":true}]";
         wireMockStub.update(wireMockServer, RequestMethod.GET, "/aircraft.*", responseJson);

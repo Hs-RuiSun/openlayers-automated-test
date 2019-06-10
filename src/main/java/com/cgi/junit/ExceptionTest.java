@@ -1,16 +1,14 @@
 package com.cgi.junit;
 
-import org.hamcrest.CoreMatchers;
-import org.junit.Rule;
-import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
-import org.junit.rules.ExpectedException;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.assertThat;
-import static org.junit.Assert.fail;
+import static org.junit.jupiter.api.Assertions.fail;
+import static org.testng.Assert.assertThrows;
 
 /**
  * verify code throws exceptions as expected
@@ -34,12 +32,12 @@ public class ExceptionTest {
     }
 
     // junit 4
-    @Rule
-    public ExpectedException thrown = ExpectedException.none();
+//    @Rule
+//    public ExpectedException thrown = ExpectedException.none();
 
-    @Test(expected = IndexOutOfBoundsException.class)
+    @Test
     public void empty() {
-        new ArrayList<>().get(0);
+        assertThrows(IndexOutOfBoundsException.class, () -> new ArrayList<>().get(0));
     }
 
     @Test
@@ -50,13 +48,5 @@ public class ExceptionTest {
         } catch (IndexOutOfBoundsException e) {
             assertThat(e.getMessage(), is("Index: 0, Size: 0"));
         }
-    }
-
-    @Test
-    public void expectedExceptionRule() throws IndexOutOfBoundsException {
-        thrown.expect(IndexOutOfBoundsException.class);
-        thrown.expectMessage("Index: 0, Size: 0");
-        thrown.expectMessage(CoreMatchers.containsString("Index: 0"));
-        new ArrayList<>().get(0);
     }
 }

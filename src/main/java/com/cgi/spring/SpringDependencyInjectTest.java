@@ -1,16 +1,16 @@
 package com.cgi.spring;
 
 import com.cgi.junit.Calculator;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 /**
  * @RunWith and @ContextConfiguration
  * indicate that the class should use Spring's JUnit utilities and ApplicationContext
  */
-@RunWith(SpringJUnit4ClassRunner.class)
+@ExtendWith(SpringExtension.class)
 @ContextConfiguration(classes = SpringDependencyInjectConfig.class)
 public class SpringDependencyInjectTest {
     /*//field injection

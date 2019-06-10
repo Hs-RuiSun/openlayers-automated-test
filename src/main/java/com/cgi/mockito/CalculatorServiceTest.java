@@ -13,8 +13,8 @@ import org.mockito.stubbing.Answer;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
@@ -83,6 +83,6 @@ class CalculatorServiceTest {
         //when(calculatorDao.findOne(eq(name), any())).thenReturn(calculator);
         when(calculatorDao.findOne(mockname, mockQuantity)).thenReturn(calculator);
         assertEquals(calculator, calculatorService.findOne(name, quantity));
-        assertTrue("", true); //assert the condition is true, if it isn't then return an AssertError with the given message
+        assertTrue(true, "error message"); //assert the condition is true, if it isn't then return an AssertError with the given message
     }
 }

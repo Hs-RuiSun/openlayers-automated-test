@@ -1,27 +1,22 @@
 package com.cgi.selenium.basic;
 
-import org.junit.AfterClass;
-import org.junit.Assert;
-import org.junit.BeforeClass;
-import org.junit.Test;
-import org.openqa.selenium.Alert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.StaleElementReferenceException;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class RightClickExample {
     static WebDriver driver;
 
     String URL = "http://medialize.github.io/jQuery-contextMenu/demo.html";
 
-    @BeforeClass
+    @BeforeAll
     public static void Setup() {
         System.setProperty("webdriver.chrome.driver", "C:\\Drivers\\chromedriver.exe");
         driver = new ChromeDriver();
@@ -40,7 +35,7 @@ public class RightClickExample {
         elementEdit.click();
         Alert alert = driver.switchTo().alert();
         String textEdit = alert.getText();
-        Assert.assertEquals(textEdit, "clicked: edit", "Failed to click on Edit link");
+        assertEquals(textEdit, "clicked: edit", "Failed to click on Edit link");
     }
 
     public void rightClick(WebElement element) {
@@ -58,7 +53,7 @@ public class RightClickExample {
         }
     }
 
-    @AfterClass
+    @AfterAll
     public static void tearDown() {
         driver.quit();
     }

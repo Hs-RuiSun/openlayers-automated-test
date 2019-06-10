@@ -1,11 +1,8 @@
 package com.cgi.junit;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
-import org.junit.runners.Parameterized.Parameters;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -15,7 +12,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 /**
  * execute a single test multiple times with different parameters
  */
-@RunWith(value = Parameterized.class)
 public class JunitParameterizedTest {
     private int numA;
     private int numB;
@@ -27,7 +23,6 @@ public class JunitParameterizedTest {
         this.expected = expected;
     }
 
-    @Parameters
     public static Collection<Object[]> data() {
         return Arrays.asList(
                 new Object[]{1, 2, 3},

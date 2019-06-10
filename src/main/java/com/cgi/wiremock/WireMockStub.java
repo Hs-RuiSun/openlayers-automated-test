@@ -2,15 +2,12 @@ package com.cgi.wiremock;
 
 import com.github.tomakehurst.wiremock.WireMockServer;
 import com.github.tomakehurst.wiremock.http.RequestMethod;
-import org.junit.rules.TestRule;
-import org.junit.runner.Description;
-import org.junit.runners.model.Statement;
+import org.springframework.stereotype.Component;
 
-import static com.github.tomakehurst.wiremock.client.WireMock.aResponse;
 import static com.github.tomakehurst.wiremock.client.WireMock.*;
-import static com.github.tomakehurst.wiremock.client.WireMock.urlMatching;
 
-public class WireMockStub implements TestRule {
+@Component
+public class WireMockStub{
 
     private String responseText = "hello world";
     private String responseJson = "[]";
@@ -36,10 +33,5 @@ public class WireMockStub implements TestRule {
             wireMockServer.stubFor(any(urlMatching(uri)).atPriority(Integer.MAX_VALUE)
                     .willReturn(aResponse().withBody(responseBody)));
         }
-    }
-
-    @Override
-    public Statement apply(Statement base, Description description) {
-        return base;
     }
 }

@@ -1,22 +1,17 @@
 package com.cgi.junit;
 
-import org.hamcrest.Description;
-import org.hamcrest.Factory;
-import org.hamcrest.Matcher;
-import org.hamcrest.TypeSafeMatcher;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static com.cgi.junit.IsAPositiveInteger.isAPositiveInteger;
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 import static org.hamcrest.beans.HasProperty.hasProperty;
 import static org.hamcrest.beans.SamePropertyValuesAs.samePropertyValuesAs;
 import static org.hamcrest.collection.IsEmptyCollection.empty;
 import static org.hamcrest.text.IsEqualIgnoringCase.equalToIgnoringCase;
-import static org.junit.Assert.assertThat;
 
 /**
  * third-party assertion libraries
@@ -52,7 +47,6 @@ public class JHamcrest {
         //number
         assertThat(5, greaterThan(3));
         assertThat(5, greaterThanOrEqualTo(4));
-        assertThat(5, isAPositiveInteger());
     }
 
     @Test
@@ -67,25 +61,6 @@ public class JHamcrest {
      */
     @org.junit.jupiter.api.Test
     public void testHamcrestInJunit5() {
-        org.hamcrest.MatcherAssert.assertThat(caculator.add(4, 5), is(equalTo(9)));
+        assertThat(caculator.add(4, 5), is(equalTo(9)));
     }
-}
-
-//customerize Matcher
-class IsAPositiveInteger extends TypeSafeMatcher<Integer> {
-    @Factory
-    public static Matcher<Integer> isAPositiveInteger() {
-        return new IsAPositiveInteger();
-    }
-
-    @Override
-    public void describeTo(Description description) {
-        description.appendText("a positive Integer");
-    }
-
-    @Override
-    protected boolean matchesSafely(Integer integer) {
-        return integer > 0;
-    }
-
 }
