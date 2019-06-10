@@ -1,8 +1,8 @@
-package com.cgi.junit;
+package com.cgi.spring;
 
+import com.cgi.junit.Calculator;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -22,7 +22,7 @@ public class SpringDependencyInjectTest {
 
     @Test
     public void testSpringDependencyInject() {
-        System.out.println(calculator.name);
+        System.out.println(calculator.getName());
     }
 
     public Calculator getCalculator() {

@@ -1,4 +1,4 @@
-package com.cgi.junit.mockito;
+package com.cgi.mockito;
 
 import com.cgi.junit.Calculator;
 import org.junit.jupiter.api.Test;

@@ -1,4 +1,4 @@
-package com.cgi.junit;
+package com.cgi.spring;
 
 public class IntegrationTest {
 }
