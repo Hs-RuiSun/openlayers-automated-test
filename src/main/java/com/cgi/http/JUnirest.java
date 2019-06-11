@@ -1,7 +1,7 @@
 package com.cgi.http;
 
-import com.cgi.junit.Calculator;
-import com.cgi.spring.Config;
+import com.cgi.model.Calculator;
+import com.cgi.wiremock.WiremockConfig;
 import com.cgi.wiremock.WireMockStub;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -25,7 +25,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-@ContextConfiguration(classes = Config.class)
+@ContextConfiguration(classes = WiremockConfig.class)
 @ExtendWith({SpringExtension.class})
 public class JUnirest {
     @Autowired

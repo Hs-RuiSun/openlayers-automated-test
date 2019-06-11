@@ -1,4 +1,4 @@
-package com.cgi.spring;
+package com.cgi.wiremock;
 
 import com.github.tomakehurst.wiremock.WireMockServer;
 import com.github.tomakehurst.wiremock.client.WireMock;
@@ -12,7 +12,7 @@ import org.springframework.context.annotation.PropertySource;
 
 @Configuration
 @PropertySource("classpath:/config.properties")
-public class Config {
+public class WiremockConfig {
     @Bean
     public Options wireMockOptions(
             @Value("${wiremock.protocol}") String protocol,

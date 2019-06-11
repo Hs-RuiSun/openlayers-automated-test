@@ -1,6 +1,6 @@
-package com.cgi.mockito;
+package com.cgi.model;
 
-import com.cgi.junit.Calculator;
+import com.cgi.model.Calculator;
 
 public interface CalculatorDao {
     public int getQuantityInStock();

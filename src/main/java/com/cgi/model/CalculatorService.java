@@ -1,9 +1,8 @@
-package com.cgi.mockito;
+package com.cgi.model;
 
+import com.cgi.mockito.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import com.cgi.junit.Calculator;
 
 @Service
 public class CalculatorService {

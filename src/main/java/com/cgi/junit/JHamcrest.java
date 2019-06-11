@@ -1,5 +1,6 @@
 package com.cgi.junit;
 
+import com.cgi.model.*;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;

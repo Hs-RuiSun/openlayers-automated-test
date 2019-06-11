@@ -1,20 +1,14 @@
 package com.cgi.mockito;
 
-import com.cgi.junit.Calculator;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.ArgumentCaptor;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.invocation.InvocationOnMock;
-import org.mockito.junit.jupiter.MockitoExtension;
-import org.mockito.stubbing.Answer;
+import com.cgi.model.*;
+import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.extension.*;
+import org.mockito.*;
+import org.mockito.junit.jupiter.*;
 
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
@@ -23,9 +17,11 @@ class CalculatorServiceTest {
     private CalculatorService calculatorService;
     @Mock
     private CalculatorDao calculatorDao;
-    public static int counter = 0;
-    String mockname = "isEqualString";
-    Integer mockQuantity = 1;
+
+    @BeforeEach
+    public void setUp(){
+        MockitoAnnotations.initMocks(this);
+    }
 
     @Test
     public void testArgumentCaptor() {
@@ -49,16 +45,14 @@ class CalculatorServiceTest {
     @Test
     public void testReturnDifferentValuesBasedOnParameters() {
         when(calculatorDao.getLabelMessage(anyString())).thenAnswer(
-                new Answer<String>() {
-                    public String answer(InvocationOnMock invocation) {
-                        String args = invocation.getArgument(0);
-                        if ("new label".equals(args)) {
-                            return "new label:.....";
-                        } else if ("old label".equals(args)) {
-                            return "old label:.....";
-                        }
-                        return "invalid arguments";
+                invocation -> {
+                    String args = invocation.getArgument(0);
+                    if ("new label".equals(args)) {
+                        return "new label:.....";
+                    } else if ("old label".equals(args)) {
+                        return "old label:.....";
                     }
+                    return "invalid arguments";
                 });
         assertEquals("new label:.....", calculatorService.getLabelMessage("new label"));
         assertEquals("old label:.....", calculatorService.getLabelMessage("old label"));
@@ -81,6 +75,9 @@ class CalculatorServiceTest {
         //incorrect, if use argument matchers, all arguments have to be provided by matchers
         //when(calculatorDao.findOne(name, any())).thenReturn(calculator);
         //when(calculatorDao.findOne(eq(name), any())).thenReturn(calculator);
+
+        String mockname = "isEqualString";
+        Integer mockQuantity = 1;
         when(calculatorDao.findOne(mockname, mockQuantity)).thenReturn(calculator);
         assertEquals(calculator, calculatorService.findOne(name, quantity));
         assertTrue(true, "error message"); //assert the condition is true, if it isn't then return an AssertError with the given message

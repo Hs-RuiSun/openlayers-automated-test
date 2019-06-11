@@ -1,6 +1,5 @@
 package com.cgi.wiremock;
 
-import com.cgi.spring.Config;
 import com.github.tomakehurst.wiremock.WireMockServer;
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.Unirest;
@@ -16,7 +15,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-@ContextConfiguration(classes = Config.class)
+@ContextConfiguration(classes = WiremockConfig.class)
 @ExtendWith({SpringExtension.class})
 @TestPropertySource(locations = "classpath:/config-test.properties")
 public class WireMockTest {
