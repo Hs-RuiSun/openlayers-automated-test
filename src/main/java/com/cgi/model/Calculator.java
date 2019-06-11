@@ -1,9 +1,9 @@
 package com.cgi.model;
 
 public class Calculator {
-    Integer quantity;
-    String name;
-    boolean secondUsed;
+    private Integer quantity;
+    private String name;
+    private boolean secondUsed;
 
     public Calculator() {
     }
